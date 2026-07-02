@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>游戏 Wiki 站上站 SOP</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --paper: #ffffff;
+        --ink: #17202a;
+        --muted: #5f6b7a;
+        --line: #d9dee7;
+        --accent: #9f4623;
+        --accent-soft: #fff0e8;
+        --code: #f1f3f6;
+        --good: #146c43;
+        --warn: #985f0d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "PingFang SC",
+          "Hiragino Sans GB",
+          "Microsoft YaHei",
+          sans-serif;
+        line-height: 1.75;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      code {
+        border-radius: 5px;
+        background: var(--code);
+        padding: 0.12em 0.35em;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.92em;
+      }
+
+      pre {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #101827;
+        color: #f8fafc;
+        padding: 16px;
+        line-height: 1.6;
+      }
+
+      pre code {
+        background: transparent;
+        padding: 0;
+        color: inherit;
+      }
+
+      .page {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 24px;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 20px;
+        align-self: start;
+        max-height: calc(100vh - 40px);
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--paper);
+        padding: 18px;
+      }
+
+      .sidebar h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+      }
+
+      .sidebar ol {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .sidebar li {
+        margin: 6px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      main {
+        min-width: 0;
+      }
+
+      .hero,
+      section {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--paper);
+      }
+
+      .hero {
+        padding: 34px;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        max-width: 860px;
+        color: var(--muted);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fafbfc;
+        padding: 4px 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      section {
+        margin-top: 20px;
+        padding: 26px;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+        font-size: 24px;
+        line-height: 1.35;
+      }
+
+      h3 {
+        margin: 22px 0 8px;
+        font-size: 17px;
+      }
+
+      ul,
+      ol {
+        padding-left: 24px;
+      }
+
+      li {
+        margin: 5px 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .box {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfd;
+        padding: 14px;
+      }
+
+      .box h3 {
+        margin-top: 0;
+      }
+
+      .callout {
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        background: var(--accent-soft);
+        padding: 14px 16px;
+      }
+
+      .check {
+        border-left: 4px solid var(--good);
+        background: #edf8f1;
+      }
+
+      .warn {
+        border-left: 4px solid var(--warn);
+        background: #fff8e8;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 960px) {
+        .page {
+          display: block;
+          padding: 14px;
+        }
+
+        .sidebar {
+          position: static;
+          max-height: none;
+          margin-bottom: 18px;
+        }
+
+        .hero,
+        section {
+          padding: 20px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page {
+          display: block;
+          max-width: none;
+          padding: 0;
+        }
+
+        .sidebar {
+          display: none;
+        }
+
+        .hero,
+        section {
+          break-inside: avoid;
+          border: 0;
+          border-radius: 0;
+          padding: 16px 0;
+        }
+
+        a {
+          color: inherit;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <aside class="sidebar" aria-label="目录">
+        <h2>目录</h2>
+        <ol>
+          <li><a href="#principles">执行原则</a></li>
+          <li><a href="#keywords">筛词与建站判断</a></li>
+          <li><a href="#competitor">竞品与复刻目标</a></li>
+          <li><a href="#repo">子仓库设置</a></li>
+          <li><a href="#data">建站数据准备</a></li>
+          <li><a href="#skin">基础换皮</a></li>
+          <li><a href="#homepage">首页制作</a></li>
+          <li><a href="#content">文章与内容</a></li>
+          <li><a href="#links">导航与内链</a></li>
+          <li><a href="#seo">SEO 工程化</a></li>
+          <li><a href="#verify">本地验证</a></li>
+          <li><a href="#deploy">Cloudflare 上线</a></li>
+          <li><a href="#analytics">GSC / GA / Clarity</a></li>
+          <li><a href="#ads">广告变现</a></li>
+          <li><a href="#diagnosis">上线后诊断</a></li>
+          <li><a href="#backlinks">外链</a></li>
+          <li><a href="#review">复盘迭代</a></li>
+          <li><a href="#codex">Codex 执行口径</a></li>
+          <li><a href="#stop">停止条件</a></li>
+        </ol>
+      </aside>
+
+      <main>
+        <header class="hero">
+          <h1>游戏 Wiki 站上站 SOP</h1>
+          <p>
+            这是给人看的中文 HTML 版 SOP，用于按照课程方法从筛词、数据准备、模板换皮、内容生产、SEO、上线、数据诊断、广告和外链一路执行。项目维护源仍然是
+            <code>docs/GAME_SITE_SOP.md</code>。
+          </p>
+          <div class="meta">
+            <span class="pill">适用：静态游戏 Wiki / 攻略站</span>
+            <span class="pill">架构：Next.js 静态导出 + Cloudflare Pages</span>
+            <span class="pill">来源：10 个课程 HTML</span>
+            <span class="pill">用途：上站执行与自检</span>
+          </div>
+        </header>
+
+        <section id="principles">
+          <h2>0. 执行原则</h2>
+          <ul>
+            <li>先大量做站，不要在前几个站上过度打磨。</li>
+            <li>选游戏看搜索需求，不按个人喜好。</li>
+            <li>新词要快，能当天上就不要拖。前 10 个站之前，速度比自动化更重要。</li>
+            <li>一页只服务一个关键词和一个搜索意图。</li>
+            <li>上线后的数据是反馈，不是情绪来源。除非影响索引、用户体验、广告或部署，不要反复大改老站。</li>
+            <li>母模板只放通用能力；具体游戏的品牌、域名、内容、广告 key 放在子仓库。</li>
+            <li>生产架构固定为 Cloudflare Pages 静态导出。</li>
+          </ul>
+          <div class="callout">
+            核心口径：不是做一个完美站，而是用稳定模板快速验证一批游戏词，然后把真实反馈沉淀回下一站。
+          </div>
+        </section>
+
+        <section id="keywords">
+          <h2>1. 筛词与建站判断</h2>
+          <h3>输入</h3>
+          <ul>
+            <li>候选游戏名。</li>
+            <li>Google Trends 曲线。</li>
+            <li>KD 或同类关键词难度信号。</li>
+            <li>Google 搜索结果：游戏主词、<code>游戏名 wiki</code>。</li>
+            <li>YouTube / TikTok / 社区近期热度。</li>
+            <li>游戏类型：Roblox 或非 Roblox。</li>
+          </ul>
+          <h3>执行</h3>
+          <ol>
+            <li>先看 Google Trends。保留上升或刚开始上升的词，谨慎处理已经明显回落的词。</li>
+            <li>看 KD。新站优先 KD 30 以下；30-60 作为中等难度；主词高 KD 时，只做长尾机会明确的页面。</li>
+            <li>看 SERP。搜索游戏名和 <code>游戏名 wiki</code>，记录首页独立小站、Fandom、官方 wiki、大媒体和成熟攻略站。</li>
+            <li>判断游戏类型。Roblox 游戏通常更适合 codes、tier list、map、boss、progression 等页面；非 Roblox 游戏要确认生命周期和内容深度。</li>
+            <li>排除风险词：cheats、hacks、exploits、scripts、pastebin、auto farm、no-key、infinite money 等。</li>
+          </ol>
+          <h3>产出</h3>
+          <ul>
+            <li>游戏名、目标域名、主关键词。</li>
+            <li>Top 10 长尾关键词。</li>
+            <li>Trends 判断、SERP 竞争判断、Go / No-go。</li>
+            <li>值得参考的竞品页面。</li>
+          </ul>
+          <div class="check callout">验收：必须能说明这个游戏为什么可能有搜索流量，以及第一批页面分别满足什么需求。</div>
+        </section>
+
+        <section id="competitor">
+          <h2>2. 竞品与复刻目标</h2>
+          <h3>执行</h3>
+          <ol>
+            <li>搜索游戏主词，不只搜 <code>游戏名 wiki</code>。</li>
+            <li>找低权重但排名靠前的独立小站，这类站证明页面结构和内容本身有效。</li>
+            <li>检查它是否有首页、列表页、文章详情页、内链、清晰导航和较高信息密度。</li>
+            <li>只选一个主要复刻目标，不要一开始拼多个设计。</li>
+            <li>保存首页、列表页、文章页、Header、Sidebar、Footer、移动端和广告位截图。</li>
+          </ol>
+          <h3>产出</h3>
+          <ul>
+            <li>复刻目标 URL。</li>
+            <li>首页 URL、列表页 URL、文章页 URL。</li>
+            <li>要复刻的结构和不要复制的问题。</li>
+          </ul>
+          <div class="check callout">验收：动手设计前，必须有一个明确目标站。</div>
+        </section>
+
+        <section id="repo">
+          <h2>3. 子仓库设置</h2>
+          <ol>
+            <li>为每个游戏站创建单独子仓库。</li>
+            <li>从母模板复制或 fork 到子仓库。</li>
+            <li>英文公开 URL 不加 <code>/en</code>。</li>
+            <li>设置 <code>NEXT_PUBLIC_SITE_URL</code> 和 <code>CLOUDFLARE_PAGES_PROJECT</code>。</li>
+            <li>游戏品牌、域名、关键词、内容、图片、广告 key、统计 key 都放子仓库，不写回母模板。</li>
+          </ol>
+          <div class="check callout">验收：子仓库能独立运行和构建，不需要改母模板。</div>
+        </section>
+
+        <section id="data">
+          <h2>4. 建站数据准备</h2>
+          <h3>需要收集</h3>
+          <div class="grid">
+            <div class="box">
+              <h3>基础信息</h3>
+              <ul>
+                <li>游戏名、短名、平台、类型。</li>
+                <li>上线 / 更新状态。</li>
+                <li>游戏官网、Roblox/Steam 页面。</li>
+                <li>Discord、YouTube、联系邮箱。</li>
+                <li>域名、主题色、Logo、favicon、Hero 图。</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>首页模块</h3>
+              <ul>
+                <li>Codes。</li>
+                <li>Beginner guide。</li>
+                <li>Tier list。</li>
+                <li>Maps、Bosses。</li>
+                <li>Classes / races / factions。</li>
+                <li>Weapons / skills / builds / progression。</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>内页关键词</h3>
+              <ul>
+                <li>主关键词。</li>
+                <li>长尾关键词。</li>
+                <li>搜索意图。</li>
+                <li>建议内容类型。</li>
+                <li>优先级。</li>
+                <li>数据来源信号。</li>
+              </ul>
+            </div>
+          </div>
+          <h3>产出文件</h3>
+          <ul>
+            <li><code>00-basic-info.md</code></li>
+            <li><code>00-homepage-modules.md</code></li>
+            <li><code>01-keywords.csv</code> 或同等表格</li>
+            <li><code>02-content-plan.md</code></li>
+            <li>媒体素材来源记录</li>
+          </ul>
+          <div class="check callout">验收：后续建站可以完全根据这些资料执行，不靠猜游戏事实。</div>
+        </section>
+
+        <section id="skin">
+          <h2>5. 基础换皮</h2>
+          <ol>
+            <li>替换 <code>SITE_CONFIG</code>：游戏名、站点名、短名、Logo 文案、描述、默认标题、联系邮箱、官方链接。</li>
+            <li>替换媒体：Hero 图、视频缩略图、YouTube ID、favicon、manifest。</li>
+            <li>用现有主题系统替换颜色，不新增一套平行主题。</li>
+            <li>替换 About、Contact、Privacy、Terms、Copyright。</li>
+            <li>清理旧游戏残留：旧游戏名、旧域名、旧文章 URL、旧官方链接、旧视频、旧图、旧广告 key。</li>
+          </ol>
+          <div class="check callout">验收：全局搜索旧游戏和旧域名，公开输出里不应残留。</div>
+        </section>
+
+        <section id="homepage">
+          <h2>6. 首页制作</h2>
+          <ol>
+            <li>首页组件保持通用，不在组件里硬编码游戏文案。</li>
+            <li>首页内容放在 locale/config 数据里。</li>
+            <li>首页 title 和 description 对准游戏主查询。</li>
+            <li>首屏必须清楚显示游戏 / 站点身份。</li>
+            <li>有真实 gameplay / trailer 视频时，把视频模块放在 Hero 附近。</li>
+            <li>用真实需求组织首页模块：最近更新、新手指南、热门攻略、游戏介绍、功能模块、FAQ、最终 CTA。</li>
+            <li>首页模块只链接已存在的导出路由；没有文章时显示真实空状态或只做信息展示。</li>
+            <li>上线前删除占位 stats、占位 codes、假官方链接和模板文案。</li>
+          </ol>
+          <div class="check callout">验收：首页只有一个 H1，有强游戏识别、有效链接、无断链、无旧游戏文案。</div>
+        </section>
+
+        <section id="content">
+          <h2>7. 文章与内容生产</h2>
+          <ol>
+            <li>文章放在 <code>content/en/&lt;content-type&gt;/&lt;slug&gt;.mdx</code>。</li>
+            <li>使用 JavaScript metadata export，不用 YAML frontmatter。</li>
+            <li>必填 metadata：title、description、category、date。</li>
+            <li>可选 metadata：image、summary、lastModified、badge。</li>
+            <li>MDX 正文从 H2 开始，不在文章里写 H1。</li>
+            <li>一篇文章只解决一个搜索意图。</li>
+            <li>正文顶部要先给直接答案。</li>
+            <li>需要比较时用表格；需要操作时用步骤；常见问题多时加 FAQ。</li>
+            <li>加相关内链；外链只放真实有用来源。</li>
+            <li>英文内容和路由稳定后再做翻译。</li>
+            <li>删除旧示例内容，或确保旧内容不导出。</li>
+          </ol>
+          <div class="check callout">验收：每篇文章意图明确、metadata 完整、渲染后只有一个 H1，并有有用内链。</div>
+        </section>
+
+        <section id="links">
+          <h2>8. 导航、内链与 URL</h2>
+          <ol>
+            <li>英文 URL 不加 <code>/en</code>。</li>
+            <li>导航来自实际内容分类，不照搬旧游戏结构。</li>
+            <li>导航标签短、清楚、可扫读。</li>
+            <li>保证每个公开页面能通过 Header/Footer、Sidebar、首页模块、文章内链、XML sitemap、HTML sitemap 被发现。</li>
+            <li>不要链接不存在的页面。</li>
+            <li>检查旧页面不要进 sitemap。</li>
+            <li>列表页要有分类标题、描述、文章卡片；无内容时有空状态。</li>
+          </ol>
+          <div class="check callout">验收：内部链接检查通过，公开 URL 不出现 <code>/en</code>。</div>
+        </section>
+
+        <section id="seo">
+          <h2>9. SEO 工程化</h2>
+          <ol>
+            <li><code>NEXT_PUBLIC_SITE_URL</code> 必须存在。</li>
+            <li>canonical、sitemap、robots、OG、Twitter、JSON-LD 都用生产域名。</li>
+            <li>按页面类型设置 metadata：首页对主词，列表页对分类词，文章页对文章关键词。</li>
+            <li>结构化数据：Homepage 用 <code>WebSite</code>、<code>Organization</code>、FAQ；列表页用 <code>ItemList</code>；文章页用 <code>Article</code>、<code>BreadcrumbList</code>、FAQ。</li>
+            <li>图片 alt 写真实游戏/媒体内容。</li>
+            <li><code>robots.txt</code> 允许抓取并声明 sitemap URL。</li>
+            <li>sitemap 从真实路由和 MDX 内容生成。</li>
+            <li>提供 HTML sitemap，并在 Footer 链接。</li>
+          </ol>
+          <div class="check callout">验收：导出的页面包含正确 metadata 和结构化数据，且域名是子站域名。</div>
+        </section>
+
+        <section id="verify">
+          <h2>10. 本地验证</h2>
+          <p>部署前必须跑：</p>
+          <pre><code>npm ci --legacy-peer-deps
+npx tsc --noEmit
+NEXT_PUBLIC_SITE_URL=https://example.wiki npm run build
+npm run preview:static
+npm run check:urls
+npm run check:internal-links</code></pre>
+          <p>把 <code>https://example.wiki</code> 换成真实生产域名。</p>
+          <h3>还要人工/浏览器确认</h3>
+          <ul>
+            <li><code>/</code>、<code>/contact</code>、<code>/sitemap</code>、<code>/robots.txt</code>、<code>/sitemap.xml</code> 返回 200。</li>
+            <li>配置广告时，<code>/ads.txt</code> 返回 200。</li>
+            <li><code>/en</code> 不公开导出。</li>
+            <li>旧游戏 URL 不存在或返回 404。</li>
+            <li>桌面和移动端无横向滚动、遮挡、重叠、隐藏 CTA。</li>
+            <li>浏览器 console 无相关运行时错误。</li>
+          </ul>
+          <div class="warn callout">未通过 typecheck、静态构建、sitemap、内部链接、浏览器检查之前，不要部署。</div>
+        </section>
+
+        <section id="deploy">
+          <h2>11. Cloudflare Pages 上线</h2>
+          <ol>
+            <li>使用 Cloudflare Pages 静态导出部署。</li>
+            <li>设置生产环境变量：<code>NEXT_PUBLIC_SITE_URL</code>、需要时的 analytics 变量、ad 变量。</li>
+            <li>从子仓库部署。</li>
+            <li>上线后验证：首页、代表性列表页、代表性文章页、联系/法律页、sitemap、robots、ads.txt。</li>
+            <li>确认生产源码/导出内容里没有旧游戏和旧域名残留。</li>
+          </ol>
+          <div class="check callout">验收：生产页面正常渲染，sitemap 和内部链接检查通过，才算上线完成。</div>
+        </section>
+
+        <section id="analytics">
+          <h2>12. GSC / GA / Clarity 与索引</h2>
+          <ol>
+            <li>把生产域名添加到 Google Search Console。</li>
+            <li>优先用 DNS 验证所有权。</li>
+            <li>提交 <code>/sitemap.xml</code>。</li>
+            <li>需要统计时安装 GA4。</li>
+            <li>需要行为诊断时安装 Microsoft Clarity。</li>
+            <li>确认统计脚本只在环境变量存在时出现。</li>
+            <li>至少等两天再判断流量。</li>
+          </ol>
+          <h3>诊断顺序</h3>
+          <ol>
+            <li>Google 能否访问站点？</li>
+            <li>sitemap 是否提交并接受？</li>
+            <li>页面是否被发现？</li>
+            <li>页面是否被索引？</li>
+            <li>是否有 impressions？</li>
+            <li>排名是否接近可点击位置？</li>
+            <li>用户是否因为页面不满足意图而跳出？</li>
+          </ol>
+          <div class="check callout">验收：GSC 正确显示站点和 sitemap；GA/Clarity 要么验证已接入，要么明确未启用。</div>
+        </section>
+
+        <section id="ads">
+          <h2>13. 广告变现</h2>
+          <ol>
+            <li>广告 key 不放母模板，只放子站环境变量。</li>
+            <li>为子站配置 <code>ads.txt</code>。</li>
+            <li>AdSense：添加站点、验证域名、通过 env 注入 Publisher ID，只在 ID 存在时渲染脚本。</li>
+            <li>Adsterra：子站单独添加网站、单独创建广告单元、banner/sidebar/sticky 使用独立 env。</li>
+            <li>隔离 banner 脚本，避免多个广告位共用 <code>window.atOptions</code> 互相覆盖。</li>
+            <li>不要给攻略站启用 Popunder、Social Bar、Smartlink 或强跳转广告。</li>
+            <li>桌面和移动端都要检查：无弹窗、无自动跳转、无遮挡、无横向溢出，首屏仍以有用内容为主。</li>
+          </ol>
+          <div class="check callout">验收：广告只在配置后渲染，且不破坏用户体验。</div>
+        </section>
+
+        <section id="diagnosis">
+          <h2>14. 上线后诊断</h2>
+          <ol>
+            <li>不要太早诊断。部署并提交 sitemap 后至少等两天。</li>
+            <li>手动 Google 搜：游戏名、游戏名 wiki、核心长尾页。</li>
+            <li>看 Trends：需求下滑可能是词的问题；需求上涨但无 impressions，优先查索引和内链。</li>
+            <li>看 GSC：sitemap、索引页、impressions、平均排名、CTR、抓取错误。</li>
+            <li>看 GA4：sessions、engagement、source/medium、top pages。</li>
+            <li>看 Clarity：rage clicks、dead clicks、scroll depth、移动端可用性问题。</li>
+            <li>如果只有首页出现：加强首页到内页链接，确认 sitemap 包含内页，Footer 放 HTML sitemap，加文章互链。</li>
+            <li>如果有索引没点击：改 title/description，首屏答案更直接，对比 SERP 竞品。</li>
+            <li>如果排名下降：先确认游戏趋势、竞品变化、近期站点改动，不要无证据重写全站。</li>
+          </ol>
+          <h3>诊断产出</h3>
+          <ul>
+            <li>已确认事实。</li>
+            <li>最可能原因。</li>
+            <li>唯一下一步动作。</li>
+            <li>暂时不改什么。</li>
+          </ul>
+          <div class="check callout">验收：每个结论都要对应 GSC、SERP、Trends、GA、Clarity 或生产行为证据。</div>
+        </section>
+
+        <section id="backlinks">
+          <h2>15. 外链</h2>
+          <ol>
+            <li>站点还没证明索引或流量潜力前，不急着发外链。</li>
+            <li>用竞品外链研究找平台类型。</li>
+            <li>优先相关场景：社区帖、网站目录、profile、文章投稿、论坛或问答中自然补充链接。</li>
+            <li>避免假高权重、垃圾评论、无关留言和平台滥用。</li>
+            <li>外链是运营动作，不是母模板代码。</li>
+          </ol>
+          <h3>记录字段</h3>
+          <ul>
+            <li>Source URL、Target URL、Anchor text、rel 类型、状态、日期。</li>
+          </ul>
+          <div class="check callout">验收：外链相关、可追踪，不要求修改母模板。</div>
+        </section>
+
+        <section id="review">
+          <h2>16. 复盘迭代</h2>
+          <ol>
+            <li>每个站记录：关键词、域名、上线日期、构建/部署结果、索引状态、早期 impressions/clicks、排名截图、错误、下次复用点。</li>
+            <li>不要无证据反复重写已上线站。</li>
+            <li>模板级问题修母模板。</li>
+            <li>子站内容问题只修子站。</li>
+            <li>如果是关键词需求问题，记下经验，继续做下一个游戏。</li>
+          </ol>
+          <div class="check callout">验收：下一个站至少带着上一个站的一条明确改进开始。</div>
+        </section>
+
+        <section id="codex">
+          <h2>17. Codex 执行口径</h2>
+          <ol>
+            <li>用户提供目标游戏名和域名。</li>
+            <li>Codex 先读 <code>COURSE_SOURCE_FILES.md</code>、<code>GAME_SITE_COURSE.md</code>、<code>GAME_SITE_SOP.md</code>、<code>GAME_SITE_LAUNCH_CHECKLIST.md</code> 和相关子仓库文件。</li>
+            <li>Codex 创建或更新子站 requirements pack。</li>
+            <li>默认只改子仓库；确认为母模板级问题时才改母模板。</li>
+            <li>验证：typecheck、静态导出 build、sitemap check、internal link check、桌面/移动端浏览器检查。</li>
+            <li>汇报：changed files、dependency changes、verification commands、失败检查、风险边界、commit/push 状态。</li>
+          </ol>
+        </section>
+
+        <section id="stop">
+          <h2>18. 停止条件</h2>
+          <ul>
+            <li>必要源文件缺失。</li>
+            <li>域名或生产目标未知。</li>
+            <li>需要外部平台登录、付款、权限、验证码或账号设置。</li>
+            <li>破坏性文件操作会影响当前项目外文件。</li>
+            <li>构建或验证失败，且失败点超出当前请求范围。</li>
+            <li>SOP 与 <code>AGENTS.md</code> 冲突；此时 <code>AGENTS.md</code> 优先。</li>
+          </ul>
+          <div class="callout">
+            停止不是放弃，而是避免在权限、生产环境、外部平台和高风险文件操作上误伤。
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

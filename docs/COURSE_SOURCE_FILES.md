@@ -26,4 +26,5 @@ Read order for course review:
 These docs are the repository-level execution layer derived from the course HTML files:
 
 - `docs/GAME_SITE_COURSE.md`
+- `docs/GAME_SITE_SOP.md`
 - `docs/GAME_SITE_LAUNCH_CHECKLIST.md`

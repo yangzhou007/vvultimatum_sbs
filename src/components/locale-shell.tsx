@@ -2,8 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vvultimatum.sbs";
+import { SITE_CONFIG } from "@/config/site";
 
 export async function LocaleShell({
   children,
@@ -17,10 +16,10 @@ export async function LocaleShell({
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "VV Ultimatum Wiki",
-    url: siteUrl,
-    logo: `${siteUrl}/android-chrome-512x512.png`,
-    image: `${siteUrl}/images/hero.webp`,
+    name: SITE_CONFIG.siteName,
+    url: SITE_CONFIG.siteUrl,
+    logo: `${SITE_CONFIG.siteUrl}/android-chrome-512x512.png`,
+    image: `${SITE_CONFIG.siteUrl}${SITE_CONFIG.heroImage}`,
   };
 
   return (

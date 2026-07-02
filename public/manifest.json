@@ -1,7 +1,7 @@
 {
-  "name": "VV: ULTIMATUM Wiki",
-  "short_name": "VV Ultimatum",
-  "description": "Fan-made VV: ULTIMATUM Roblox wiki with codes, bosses, builds, races and guides.",
+  "name": "Game Wiki Template",
+  "short_name": "Game Wiki",
+  "description": "Reusable static game wiki template for fan guides, codes, bosses, maps, and progression walkthroughs.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d0d0d",

@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ChevronRight, ExternalLink, Moon, Play, Sun, Menu } from "lucide-react";
+import { ChevronRight, ExternalLink, Play, Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { NAVIGATION_CONFIG } from "@/config/navigation";
+import { SITE_CONFIG } from "@/config/site";
 import type { NavGroup } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,8 +21,8 @@ export async function SiteHeader({ locale }: { locale: string }) {
   const header = (
     <div className="flex items-center justify-between gap-4">
       <Link href={localizeHref("/", locale)} className="flex items-center gap-3">
-        <span className="grid h-9 w-9 place-items-center rounded-xl border border-border bg-muted text-sm font-black text-foreground">VV</span>
-        <span className="text-sm font-bold tracking-wide text-foreground">VV: ULTIMATUM</span>
+        <span className="grid h-9 w-9 place-items-center rounded-xl border border-border bg-muted text-sm font-black text-foreground">{SITE_CONFIG.logoText}</span>
+        <span className="text-sm font-bold tracking-wide text-foreground">{SITE_CONFIG.gameName}</span>
       </Link>
       <nav className="hidden items-center gap-1 md:flex">
         {NAVIGATION_CONFIG.map((item) => (
@@ -58,22 +59,37 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
 export async function WikiSidebar({ locale, navGroups, currentPath }: { locale: string; navGroups: NavGroup[]; currentPath?: string }) {
   const t = await getTranslations({ locale, namespace: "shared" });
   const isActive = (href: string) => currentPath === href;
-  return <aside className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1"><section className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm"><h3 className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">{t("wikiNavigation")}</h3><div className="space-y-4">{navGroups.map((group) => <CollapsibleNavGroup key={group.slug} title={group.title} icon={<span className="grid h-4 w-4 place-items-center rounded text-[10px] font-bold text-[hsl(var(--nav-theme))]">{group.title[0]}</span>} count={group.count} currentPath={currentPath}><ul className="space-y-1">{group.links.map((link) => <li key={link.href}><Link href={localizeHref(link.href, locale)} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors ${isActive(link.href) ? "bg-[hsl(var(--nav-theme)/0.15)] font-semibold text-[hsl(var(--nav-theme))]" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}><span className="truncate">{link.label}</span>{link.badge && <Badge variant="secondary" className="ml-auto h-5 border-border px-1.5 text-[10px]">{link.badge}</Badge>}</Link></li>)}</ul></CollapsibleNavGroup>)}</div></section><section className="rounded-2xl border border-border bg-card/60 p-5"><h3 className="mb-3 text-sm font-bold text-foreground">{t("activeCodes")}</h3><div className="space-y-3 text-sm"><div className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">FULLRELEASE</code><p className="mt-1 text-muted-foreground">1x Manipulator's Eyepatch (Limited) + 10x Clan Reroll</p></div><div className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">75KLIKES</code><p className="mt-1 text-muted-foreground">3x Ability Reroll</p></div><Link href={localizeHref("/codes", locale)} className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("viewAllCodes")} <ChevronRight className="h-4 w-4" /></Link></div></section></aside>;
+  return <aside className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1"><section className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm"><h3 className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">{t("wikiNavigation")}</h3><div className="space-y-4">{navGroups.map((group) => <CollapsibleNavGroup key={group.slug} title={group.title} icon={<span className="grid h-4 w-4 place-items-center rounded text-[10px] font-bold text-[hsl(var(--nav-theme))]">{group.title[0]}</span>} count={group.count} currentPath={currentPath}><ul className="space-y-1">{group.links.map((link) => <li key={link.href}><Link href={localizeHref(link.href, locale)} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors ${isActive(link.href) ? "bg-[hsl(var(--nav-theme)/0.15)] font-semibold text-[hsl(var(--nav-theme))]" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}><span className="truncate">{link.label}</span>{link.badge && <Badge variant="secondary" className="ml-auto h-5 border-border px-1.5 text-[10px]">{link.badge}</Badge>}</Link></li>)}</ul></CollapsibleNavGroup>)}</div></section>{SITE_CONFIG.activeCodes.length > 0 && <section className="rounded-2xl border border-border bg-card/60 p-5"><h3 className="mb-3 text-sm font-bold text-foreground">{t("activeCodes")}</h3><div className="space-y-3 text-sm">{SITE_CONFIG.activeCodes.map((item) => <div key={item.code} className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">{item.code}</code><p className="mt-1 text-muted-foreground">{item.reward}</p></div>)}<Link href={localizeHref("/codes", locale)} className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("viewAllCodes")} <ChevronRight className="h-4 w-4" /></Link></div></section>}</aside>;
 }
 
 export async function SiteFooter({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "footer" });
   const site = await getTranslations({ locale, namespace: "site" });
-  return <footer className="mt-16 border-t border-border bg-card/30"><div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div className="mb-10 rounded-2xl border border-border bg-muted/40 p-5"><div className="font-bold text-foreground">VV Ultimatum</div><p className="mt-1 text-sm text-muted-foreground">{t("description")}</p><Link href="https://www.roblox.com/games/6270290407/VV-ULTIMATUM" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("quickLinks")} <ExternalLink className="h-4 w-4" /></Link></div><p className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{site("legalNotice")}</p><div className="grid gap-8 md:grid-cols-4"><div className="md:col-span-2"><h3 className="font-bold text-foreground">{t("aboutTitle")}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{t("about")}</p></div><FooterList title={t("quickLinks")} links={[[t("playGame"), "https://www.roblox.com/games/6270290407/VV-ULTIMATUM"], [t("officialDiscord"), "https://discord.gg/vvgame"], [t("officialYoutube"), "https://www.youtube.com/@vvrobloxgame"], [t("vvBuilder"), "https://www.vvbuilder.online/"]]} /><FooterList title={t("guides")} links={[[t("beginnerGuide"), "/beginner-guide"], [t("raceGuides"), "/races"], [t("bossGuides"), "/bosses"], [t("buildGuide"), "/builds"], [t("privacyPolicy"), "/privacy-policy"], [t("termsOfService"), "/terms-of-service"]]} /></div><p className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">{t("copyright")}</p></div></footer>;
+  const quickLinks = [
+    [t("playGame"), SITE_CONFIG.officialLinks.game],
+    [t("officialDiscord"), SITE_CONFIG.officialLinks.discord],
+    [t("officialYoutube"), SITE_CONFIG.officialLinks.youtube],
+    [t("vvBuilder"), SITE_CONFIG.officialLinks.builder],
+  ].filter(([, href]) => Boolean(href));
+  const guideLinks = [
+    [t("beginnerGuide"), SITE_CONFIG.footerGuideLinks.beginnerGuide],
+    [t("raceGuides"), SITE_CONFIG.footerGuideLinks.raceGuides],
+    [t("bossGuides"), SITE_CONFIG.footerGuideLinks.bossGuides],
+    [t("buildGuide"), SITE_CONFIG.footerGuideLinks.buildGuide],
+    [t("privacyPolicy"), SITE_CONFIG.footerGuideLinks.privacyPolicy],
+    [t("termsOfService"), SITE_CONFIG.footerGuideLinks.termsOfService],
+  ];
+
+  return <footer className="mt-16 border-t border-border bg-card/30"><div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><div className="mb-10 rounded-2xl border border-border bg-muted/40 p-5"><div className="font-bold text-foreground">{SITE_CONFIG.shortName}</div><p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>{SITE_CONFIG.officialLinks.game && <Link href={SITE_CONFIG.officialLinks.game} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("quickLinks")} <ExternalLink className="h-4 w-4" /></Link>}</div><p className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{site("legalNotice")}</p><div className="grid gap-8 md:grid-cols-4"><div className="md:col-span-2"><h3 className="font-bold text-foreground">{t("aboutTitle")}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">{t("about")}</p></div>{quickLinks.length > 0 && <FooterList title={t("quickLinks")} links={quickLinks} locale={locale} />}<FooterList title={t("guides")} links={guideLinks} locale={locale} /></div><p className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">{t("copyright")}</p></div></footer>;
 }
 
-function FooterList({ title, links }: { title: string; links: string[][] }) { return <div><h4 className="font-semibold text-foreground">{title}</h4><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{links.map(([label, href]) => <li key={href}><Link className="hover:text-foreground" href={href}>{label}</Link></li>)}</ul></div>; }
+function FooterList({ title, links, locale }: { title: string; links: readonly string[][]; locale: string }) { return <div><h4 className="font-semibold text-foreground">{title}</h4><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{links.map(([label, href]) => <li key={href}><Link className="hover:text-foreground" href={href.startsWith("/") ? localizeHref(href, locale) : href}>{label}</Link></li>)}</ul></div>; }
 
 export function TrailerCard({ videoId }: { videoId: string }) {
   return (
     <div className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border shadow-lg transition-all duration-200">
       <div className="relative aspect-video w-full">
-        <img src="/images/hero-trailer-thumbnail.jpg" alt="VV: ULTIMATUM Official Trailer" className="size-full object-cover transition-all duration-200 group-hover:brightness-80" />
+        <img src={SITE_CONFIG.trailerThumbnail} alt={`${SITE_CONFIG.gameName} official trailer`} className="size-full object-cover transition-all duration-200 group-hover:brightness-80" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex size-20 items-center justify-center rounded-full bg-primary/10 backdrop-blur-md transition-transform duration-200 group-hover:scale-105 sm:size-24">

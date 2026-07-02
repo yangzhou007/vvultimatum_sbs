@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { JsonLd, WikiSidebar } from "@/components/site";
+import { SITE_CONFIG } from "@/config/site";
 import { getAllContent, getDynamicNavigation, type ContentItem, CONTENT_TYPES } from "@/lib/content";
 import { routing, type Locale } from "@/i18n/routing";
 import en from "@/locales/en.json";
 import HomePageClient from "./HomePageClient";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vvultimatum.sbs";
 
 type Messages = typeof en;
 
@@ -14,10 +13,10 @@ export async function generateHomeMetadata(locale: string): Promise<Metadata> {
   setRequestLocale(locale);
   const messages = (await getMessages({ locale })) as Messages;
   return {
-    title: messages.home.meta.title,
-    description: messages.home.meta.description,
+    title: SITE_CONFIG.defaultTitle,
+    description: SITE_CONFIG.description,
     alternates: { canonical: locale === "en" ? "/" : `/${locale}`, languages: { en: "/" } },
-    openGraph: { title: messages.home.meta.title, description: messages.home.meta.description, url: siteUrl, images: [`${siteUrl}/images/hero.webp`] },
+    openGraph: { title: SITE_CONFIG.defaultTitle, description: SITE_CONFIG.description, url: SITE_CONFIG.siteUrl, images: [`${SITE_CONFIG.siteUrl}${SITE_CONFIG.heroImage}`] },
   };
 }
 
@@ -31,7 +30,7 @@ export async function HomePageContent({ locale }: { locale: string }) {
   const loc = locale as Locale;
   const messages = (await getMessages({ locale })) as Messages;
   const navGroups = getDynamicNavigation(loc);
-  const webSite = { "@context": "https://schema.org", "@type": "WebSite", name: "VV Ultimatum Wiki", url: siteUrl, description: messages.home.meta.description };
+  const webSite = { "@context": "https://schema.org", "@type": "WebSite", name: SITE_CONFIG.siteName, url: SITE_CONFIG.siteUrl, description: SITE_CONFIG.description };
 
   // 动态加载所有 content 目录下的文章
   const allArticles: ContentItem[] = [];

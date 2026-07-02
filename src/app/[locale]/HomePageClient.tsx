@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { TrailerButton, localizeHref } from "@/components/site";
+import { SITE_CONFIG } from "@/config/site";
 import type { ContentItem } from "@/lib/content";
 import en from "@/locales/en.json";
 
@@ -16,20 +17,18 @@ const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swo
 
 
 export default function HomePageClient({ home, locale, articles, recentArticles }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
-  const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
-
   return (
     <div className="min-w-0 space-y-16">
       {/* Hero Section */}
       <section className="text-center">
         <div className="mx-auto mb-5 flex min-w-0 flex-wrap items-center justify-center gap-2">
-          <h1 className="break-words text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
+          <h1 className="break-words text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{SITE_CONFIG.gameName}</h1>
           <span className="mt-2 inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground sm:-translate-y-1.5">{home.hero.eyebrow}</span>
         </div>
-        <div className="mx-auto mt-5 max-w-2xl">
-          <TrailerButton videoId={YOUTUBE_VIDEO_ID} />
-        </div>
-        <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{home.hero.description}</p>
+        {SITE_CONFIG.trailerYoutubeId && <div className="mx-auto mt-5 max-w-2xl">
+          <TrailerButton videoId={SITE_CONFIG.trailerYoutubeId} />
+        </div>}
+        <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{SITE_CONFIG.description}</p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">{home.hero.stats.map((stat) => <span key={stat} className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">{stat}</span>)}</div>
       </section>
 
@@ -111,7 +110,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
       )}
 
       {/* About Game (curated, stays in JSON) */}
-      <section className="grid gap-8 rounded-3xl border border-border bg-card/60 p-6 lg:grid-cols-[1.1fr_0.9fr]"><div><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.aboutGame.title}</h2>{home.aboutGame.paragraphs.map((p) => <p key={p} className="mt-5 leading-8 text-muted-foreground">{p}</p>)}<Button asChild className="mt-6"><Link href={localizeHref("/guide/vv-ultimatum-beginner-guide-2026", locale)}>{home.aboutGame.cta}</Link></Button></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">{home.aboutGame.stats.map((stat) => <div key={stat.label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</p><p className="mt-2 text-xl font-bold text-foreground">{stat.value}</p></div>)}</div></section>
+      <section className="grid gap-8 rounded-3xl border border-border bg-card/60 p-6 lg:grid-cols-[1.1fr_0.9fr]"><div><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.aboutGame.title}</h2>{home.aboutGame.paragraphs.map((p) => <p key={p} className="mt-5 leading-8 text-muted-foreground">{p}</p>)}<Button asChild className="mt-6"><Link href={localizeHref(SITE_CONFIG.footerGuideLinks.beginnerGuide, locale)}>{home.aboutGame.cta}</Link></Button></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">{home.aboutGame.stats.map((stat) => <div key={stat.label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</p><p className="mt-2 text-xl font-bold text-foreground">{stat.value}</p></div>)}</div></section>
 
       {/* 8 Module Sections (full-width stacked, matching reference site style) */}
       {home.explore.modules && home.explore.modules.length > 0 && (
@@ -226,7 +225,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
       <section><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.faq.title}</h2><p className="mt-2 text-muted-foreground">{home.faq.description}</p><Accordion type="single" collapsible className="mt-6 rounded-2xl border border-border bg-card/70 px-5">{home.faq.items.map((item, index) => <AccordionItem key={item.question} value={`item-${index}`}><AccordionTrigger className="text-left text-foreground">{item.question}</AccordionTrigger><AccordionContent className="leading-7 text-muted-foreground">{item.answer}</AccordionContent></AccordionItem>)}</Accordion></section>
 
       {/* Final CTA (curated, stays in JSON) */}
-      <section className="rounded-3xl border border-border bg-gradient-to-br from-muted to-card p-8 text-center"><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.finalCta.title}</h2><p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{home.finalCta.description}</p><div className="mt-6 flex flex-wrap justify-center gap-3"><Button asChild size="lg"><Link href={localizeHref("/guide/vv-ultimatum-beginner-guide-2026", locale)}>{home.finalCta.primary}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link href="https://www.roblox.com/games/6270290407/VV-ULTIMATUM">{home.finalCta.secondary}</Link></Button></div></section>
+      <section className="rounded-3xl border border-border bg-gradient-to-br from-muted to-card p-8 text-center"><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.finalCta.title}</h2><p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{home.finalCta.description}</p><div className="mt-6 flex flex-wrap justify-center gap-3"><Button asChild size="lg"><Link href={localizeHref(SITE_CONFIG.footerGuideLinks.beginnerGuide, locale)}>{home.finalCta.primary}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button>{SITE_CONFIG.officialLinks.game && <Button asChild size="lg" variant="outline"><Link href={SITE_CONFIG.officialLinks.game}>{home.finalCta.secondary}</Link></Button>}</div></section>
     </div>
   );
 }

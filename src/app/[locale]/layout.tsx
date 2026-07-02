@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { LocaleShell } from "@/components/locale-shell";
+import { SITE_CONFIG } from "@/config/site";
 import { routing } from "@/i18n/routing";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vvultimatum.sbs";
 
 export const dynamicParams = false;
 
@@ -14,12 +13,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const image = `${siteUrl}/images/hero.webp`;
+  const image = `${SITE_CONFIG.siteUrl}${SITE_CONFIG.heroImage}`;
   return {
-    metadataBase: new URL(siteUrl),
-    title: { default: "VV: ULTIMATUM Wiki", template: "%s" },
-    description: "Complete VV: ULTIMATUM fan wiki with codes, bosses, builds, races, guides and progression walkthroughs.",
-    openGraph: { type: "website", locale, url: siteUrl, siteName: "VV Ultimatum Wiki", images: [{ url: image }] },
+    metadataBase: new URL(SITE_CONFIG.siteUrl),
+    title: { default: SITE_CONFIG.defaultTitle, template: "%s" },
+    description: SITE_CONFIG.description,
+    openGraph: { type: "website", locale, url: SITE_CONFIG.siteUrl, siteName: SITE_CONFIG.siteName, images: [{ url: image }] },
     twitter: { card: "summary_large_image", images: [image] },
   };
 }

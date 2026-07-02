@@ -7,7 +7,10 @@ This repository is a static Next.js game wiki mother template. The production ta
 Create these repository variables:
 
 - `CLOUDFLARE_PAGES_PROJECT`: Cloudflare Pages project name.
-- `NEXT_PUBLIC_SITE_URL`: production site URL, for example `https://example.wiki`.
+- `NEXT_PUBLIC_SITE_URL`: production site URL, for example `https://example.wiki`. This value is required; builds fail when it is missing.
+
+These variables are reserved for child sites that add analytics or advertising components. The mother template does not render GA, Clarity, AdSense, or ad slots by default:
+
 - `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`
 - `NEXT_PUBLIC_MICROSOFT_CLARITY_ID`
 - `NEXT_PUBLIC_GOOGLE_ADSENSE_ID`
@@ -32,12 +35,13 @@ The Cloudflare API token needs permission to deploy the target Pages project.
 ```bash
 npm ci --legacy-peer-deps
 npx tsc --noEmit
-npm run build
+NEXT_PUBLIC_SITE_URL=https://example.wiki npm run build
 npm run preview:static
 npm run check:urls
+npm run check:internal-links
 ```
 
-`npm run build` writes the static site to `out/`, copies English pages from `out/en` to the root, removes `out/en`, and validates `sitemap.xml`.
+`npm run build` writes the static site to `out/`, copies English pages from `out/en` to the root, removes `out/en`, validates `sitemap.xml`, and checks exported HTML for broken internal links.
 
 ## Cloudflare Pages Project
 
@@ -71,4 +75,5 @@ The deployment is valid only when all of these pass:
 - `out/en` does not exist after build.
 - `out/sitemap.xml` contains no `/en/` URLs.
 - Every sitemap URL maps to an exported HTML file.
+- `npm run check:internal-links` passes against the exported `out/` directory.
 - Preview URLs return HTTP 200 for `/`, `/bosses`, `/guide/vv-ultimatum-beginner-guide-2026`, `/ja`, `/ja/bosses`, `/robots.txt`, `/sitemap.xml`, and `/ads.txt`.

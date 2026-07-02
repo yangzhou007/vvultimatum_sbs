@@ -1,10 +1,10 @@
 {
   "site": {
-    "name": "VV: ULTIMATUM",
-    "shortName": "VV Ultimatum",
+    "name": "Game Wiki",
+    "shortName": "Game Wiki",
     "tagline": "Fan-Made Community Wiki",
-    "description": "Your complete companion for VV: ULTIMATUM on Roblox. Master all three races Shinigami, Quincy, and Hollow with in-depth guides, boss strategies, build optimization, and the latest codes.",
-    "legalNotice": "Non-official fan wiki. Made by players, for players."
+    "description": "Reusable static game wiki template for guides, codes, bosses, maps, tier lists, and progression walkthroughs.",
+    "legalNotice": "Reusable static fan wiki template. Child sites must replace this copy."
   },
   "nav": {
     "races": "Races",
@@ -14,20 +14,19 @@
     "tierList": "Tier List",
     "maps": "Maps",
     "skills": "Skills",
-    "updates": "Updates",
     "home": "Home",
     "menu": "Menu",
     "toggleTheme": "Toggle theme"
   },
   "home": {
     "meta": {
-      "title": "VV: ULTIMATUM — Codes, Builds, Guides | VV Ultimatum Wiki",
-      "description": "Complete VV: ULTIMATUM wiki with active codes, boss strategies, race guides, build optimization, and progression walkthroughs for Shinigami, Quincy, and Hollow."
+      "title": "Game Wiki Template",
+      "description": "Reusable static game wiki template for guides, codes, bosses, maps, tier lists, and progression walkthroughs."
     },
     "hero": {
       "eyebrow": "Fan-Made Community Wiki",
-      "title": "VV: ULTIMATUM",
-      "description": "Your complete companion for VV: ULTIMATUM on Roblox. Master all three races Shinigami, Quincy, and Hollow with in-depth guides, boss strategies, build optimization, and the latest codes.",
+      "title": "Game Wiki",
+      "description": "Reusable static game wiki template for guides, codes, bosses, maps, tier lists, and progression walkthroughs.",
       "stats": [
         "Launched Jun 5",
         "Updated Jun 11",
@@ -47,7 +46,7 @@
     },
     "start": {
       "eyebrow": "Start Here",
-      "title": "Your VV Ultimatum Journey",
+      "title": "Start Your Game Wiki",
       "cards": [
         {
           "number": "1",
@@ -85,7 +84,7 @@
           "badge": "Beginner",
           "title": "Beginner Guide",
           "description": "Everything you need from your first login to mastering the basics of combat and progression.",
-          "href": "/beginner-guide"
+          "href": "/guide/vv-ultimatum-beginner-guide-2026"
         },
         {
           "badge": "Updated",
@@ -97,43 +96,43 @@
           "badge": "Updated",
           "title": "Equipment Database",
           "description": "94 items across 5 slots complete gear database with stats, rarity, and sources.",
-          "href": "/equipment"
+          "href": "/skills"
         },
         {
           "badge": "Popular",
           "title": "Which Race Should You Pick?",
           "description": "Shinigami, Quincy, or Hollow compare all three and find your perfect playstyle.",
-          "href": "/races/best-race"
+          "href": "/races"
         },
         {
           "badge": "New",
           "title": "Enemies & Monsters",
           "description": "23 enemy types across 5 regions drops, locations, and farming tips.",
-          "href": "/enemies"
+          "href": "/bosses"
         },
         {
           "badge": "Popular",
           "title": "Boss Locations & Drops",
           "description": "Every boss location, drop table, and respawn timer in one reference.",
-          "href": "/boss-locations-drops-respawn-times"
+          "href": "/bosses"
         },
         {
           "badge": "Popular",
           "title": "Best Builds",
           "description": "Optimal stat allocation, skill tree picks, and Charm combos for every playstyle.",
-          "href": "/builds/best-builds"
+          "href": "/guide/VV-Ultimatum-builder"
         },
         {
           "badge": "New",
           "title": "Shikai Tier List",
           "description": "All 6 Shinigami Shikai types ranked by PvP and PvE performance.",
-          "href": "/tier-list/shikai"
+          "href": "/tier-list/vv-ultimatum-best-shikai-tier-list"
         },
         {
           "badge": "New",
           "title": "World Events Guide",
           "description": "Supply Caches, Raids, and endgame world events with rare rewards.",
-          "href": "/world-events"
+          "href": "/guide"
         }
       ]
     },
@@ -466,14 +465,14 @@
     "noGuidesAvailable": "No guides available yet. Check back soon!"
   },
   "footer": {
-    "aboutTitle": "VV Ultimatum Wiki",
-    "about": "VV Ultimatum Wiki is an independent fan-built guide hub covering progression routes, races, bosses, builds, and essential game knowledge for new and veteran players alike.",
+    "aboutTitle": "Game Wiki Template",
+    "about": "Game Wiki Template is a static guide-site starter for reusable wiki navigation, MDX content, and Cloudflare Pages deployment.",
     "quickLinks": "Quick Links",
     "guides": "Guides",
     "legal": "Legal",
-    "copyright": "2026 VV: ULTIMATUM Wiki. Not affiliated with Midnight Continent or Roblox.",
-    "description": "Free Bleach-inspired fighting RPG on Roblox. 3 races, 130+ skills, Lv100 cap.",
-    "playGame": "Play VV: ULTIMATUM",
+    "copyright": "2026 Game Wiki Template. Child sites must replace this notice with their own legal copy.",
+    "description": "Reusable static game wiki template for guide sites.",
+    "playGame": "Official Game",
     "officialDiscord": "Official Discord",
     "officialYoutube": "Official YouTube",
     "vvBuilder": "VV Builder (Skill Planner)",

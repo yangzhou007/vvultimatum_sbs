@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
-    "build": "next build && node scripts/copy-default-locale-to-root.mjs && node scripts/check-static-export.mjs",
+    "build": "next build && node scripts/copy-default-locale-to-root.mjs && node scripts/check-static-export.mjs && node scripts/check-internal-links.mjs",
     "start": "npm run preview:static",
     "preview:static": "npx wrangler pages dev out",
     "check:urls": "node scripts/check-sitemap-urls.mjs",
+    "check:internal-links": "node scripts/check-internal-links.mjs",
     "deploy:pages": "npx wrangler pages deploy out --project-name \"$CLOUDFLARE_PAGES_PROJECT\" --branch main",
     "lint": "npx tsc --noEmit && npx next lint",
     "format": "npx biome format --write"

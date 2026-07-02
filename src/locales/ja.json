@@ -1,10 +1,10 @@
 {
   "site": {
-    "name": "VV: ULTIMATUM",
-    "shortName": "VV Ultimatum",
+    "name": "Game Wiki",
+    "shortName": "Game Wiki",
     "tagline": "ファンメイド コミュニティ Wiki",
-    "description": "Roblox『VV: ULTIMATUM』の完全攻略Wiki。死神・滅却師・虚の3つの種族を極めるためのガイド、ボス攻略、ビルド最適化、最新コード情報。",
-    "legalNotice": "非公式ファンWiki。プレイヤーによる、プレイヤーのための攻略サイト。"
+    "description": "ガイド、コード、ボス、マップ、Tier List、進行記事向けの再利用可能な静的ゲーム Wiki テンプレート。",
+    "legalNotice": "再利用可能な静的ファン Wiki テンプレート。子サイトではこの文言を置き換えてください。"
   },
   "nav": {
     "races": "種族",
@@ -14,20 +14,19 @@
     "tierList": "Tier List",
     "maps": "マップ",
     "skills": "スキル",
-    "updates": "アップデート",
     "home": "ホーム",
     "menu": "メニュー",
     "toggleTheme": "テーマ切替"
   },
   "home": {
     "meta": {
-      "title": "VV: ULTIMATUM — コード・ビルド・ガイド | VV Ultimatum Wiki",
-      "description": "VV: ULTIMATUM の完全攻略Wiki。有効なコード、ボス攻略、種族ガイド、ビルド最適化、死神・滅却師・虚の進行ウォークスルー。"
+      "title": "Game Wiki Template",
+      "description": "ガイド、コード、ボス、マップ、Tier List、進行記事向けの再利用可能な静的ゲーム Wiki テンプレート。"
     },
     "hero": {
       "eyebrow": "ファンメイド コミュニティ Wiki",
-      "title": "VV: ULTIMATUM",
-      "description": "Roblox『VV: ULTIMATUM』の完全攻略Wiki。死神・滅却師・虚の3つの種族を極めるためのガイド、ボス攻略、ビルド最適化、最新コード情報を網羅。",
+      "title": "Game Wiki",
+      "description": "ガイド、コード、ボス、マップ、Tier List、進行記事向けの再利用可能な静的ゲーム Wiki テンプレート。",
       "stats": [
         "6月5日配信",
         "6月12日更新",
@@ -47,7 +46,7 @@
     },
     "start": {
       "eyebrow": "ここから始める",
-      "title": "VV Ultimatum の旅立ち",
+      "title": "Game Wiki を始める",
       "cards": [
         {
           "number": "1",
@@ -85,7 +84,7 @@
           "badge": "初心者",
           "title": "初心者ガイド",
           "description": "初回ログインから戦闘と進行の基本をマスターするまで、必要な情報をすべて解説。",
-          "href": "/beginner-guide"
+          "href": "/guide/vv-ultimatum-beginner-guide-2026"
         },
         {
           "badge": "更新",
@@ -97,43 +96,43 @@
           "badge": "更新",
           "title": "装備データベース",
           "description": "5スロット94アイテムの完全装備データベース。ステータス・レアリティ・入手方法付き。",
-          "href": "/equipment"
+          "href": "/skills"
         },
         {
           "badge": "人気",
           "title": "どの種族を選ぶべき？",
           "description": "死神・滅却師・虚の3種族を比較し、自分に合ったプレイスタイルを見つけよう。",
-          "href": "/races/best-race"
+          "href": "/races"
         },
         {
           "badge": "新着",
           "title": "敵・モンスター一覧",
           "description": "5地域に生息する23種の敵。ドロップ・出現場所・素材集めのコツ。",
-          "href": "/enemies"
+          "href": "/bosses"
         },
         {
           "badge": "人気",
           "title": "ボスの場所とドロップ",
           "description": "全ボスの出現場所、ドロップテーブル、リスポーンタイマーを一覧化。",
-          "href": "/boss-locations-drops-respawn-times"
+          "href": "/bosses"
         },
         {
           "badge": "人気",
           "title": "ベストビルド",
           "description": "全プレイスタイルに最適なステータス配分、スキルツリー、お守りコンボ。",
-          "href": "/builds/best-builds"
+          "href": "/guide/VV-Ultimatum-builder"
         },
         {
           "badge": "新着",
           "title": "始解 Tier List",
           "description": "死神の6種の始解をPvP・PvE性能でランキング。",
-          "href": "/tier-list/shikai"
+          "href": "/tier-list/vv-ultimatum-best-shikai-tier-list"
         },
         {
           "badge": "新着",
           "title": "ワールドイベントガイド",
           "description": "補給物資、レイド、レア報酬のエンドゲームワールドイベント。",
-          "href": "/world-events"
+          "href": "/guide"
         }
       ]
     },
@@ -466,14 +465,14 @@
     "noGuidesAvailable": "ガイドはまだありません。お楽しみに！"
   },
   "footer": {
-    "aboutTitle": "VV Ultimatum Wiki",
-    "about": "VV Ultimatum Wiki は、新規プレイヤーからベテランまで、進行ルート・種族・ボス・ビルドなど幅広いゲーム知識を網羅したファン制作の攻略サイトです。",
+    "aboutTitle": "Game Wiki Template",
+    "about": "Game Wiki Template は、Wiki ナビゲーション、MDX コンテンツ、Cloudflare Pages デプロイを再利用するための静的ガイドサイト starter です。",
     "quickLinks": "クイックリンク",
     "guides": "ガイド",
     "legal": "法務",
-    "copyright": "© 2026 VV: ULTIMATUM Wiki. Midnight Continent および Roblox とは無関係です。",
-    "description": "Roblox の無料 Bleach 系格闘 RPG。3種族、130以上のスキル、Lv100上限。",
-    "playGame": "VV: ULTIMATUM をプレイ",
+    "copyright": "© 2026 Game Wiki Template. 子サイトでは独自の法務文言に置き換えてください。",
+    "description": "静的ゲーム Wiki サイト向けの再利用可能なテンプレート。",
+    "playGame": "公式ゲーム",
     "officialDiscord": "公式 Discord",
     "officialYoutube": "公式 YouTube",
     "vvBuilder": "VV Builder（スキルプランナー）",

@@ -1,4 +1,4 @@
-import { BookOpen, Code2, Flame, Map, Swords, Trophy, Users, Zap } from "lucide-react";
+import { BookOpen, Code2, Flame, Map, Swords, Trophy, Users } from "lucide-react";
 
 export const NAVIGATION_CONFIG = [
   { key: "races", path: "/races", icon: Users, isContentType: true },
@@ -8,7 +8,6 @@ export const NAVIGATION_CONFIG = [
   { key: "tierList", path: "/tier-list", icon: Trophy, isContentType: true },
   { key: "maps", path: "/maps", icon: Map, isContentType: true },
   { key: "skills", path: "/skills", icon: Flame, isContentType: true },
-  { key: "updates", path: "/updates", icon: Zap, isContentType: true },
 ] as const;
 
 export const CONTENT_TYPES = NAVIGATION_CONFIG.filter((item) => item.isContentType).map((item) => item.path.replace(/^\//, ""));

@@ -1,6 +1,6 @@
 # Course Source Files
 
-The course HTML files are the source of truth for this project. Do not use the old PDF course exports as reference unless the user explicitly asks to inspect a PDF.
+The course HTML files are the source of truth for this project.
 
 Do not move, delete, rename, or commit these HTML files into the repository unless the user explicitly asks for that exact file operation.
 

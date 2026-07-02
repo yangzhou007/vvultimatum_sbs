@@ -13,7 +13,7 @@ export const routing = defineRouting({
   defaultLocale: "en",
   // English is served without a `/en` prefix (e.g. `/bosses`, `/bosses/gelum`).
   localePrefix: "as-needed",
-  localeDetection: true,
+  localeDetection: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

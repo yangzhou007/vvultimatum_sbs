@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { JsonLd, WikiSidebar } from "@/components/site";
 import { getAllContent, getDynamicNavigation, type ContentItem, CONTENT_TYPES } from "@/lib/content";
 import { routing, type Locale } from "@/i18n/routing";
@@ -10,8 +10,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vvultimatum.sbs";
 
 type Messages = typeof en;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateHomeMetadata(locale: string): Promise<Metadata> {
+  setRequestLocale(locale);
   const messages = (await getMessages({ locale })) as Messages;
   return {
     title: messages.home.meta.title,
@@ -21,8 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function LocaleHomePage({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  return generateHomeMetadata(locale);
+}
+
+export async function HomePageContent({ locale }: { locale: string }) {
+  setRequestLocale(locale);
   const loc = locale as Locale;
   const messages = (await getMessages({ locale })) as Messages;
   const navGroups = getDynamicNavigation(loc);
@@ -47,10 +52,17 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={webSite} />
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} />
+      <div className="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+        <div className="min-w-0">
+          <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} />
+        </div>
         <WikiSidebar locale={locale} navGroups={navGroups} />
       </div>
     </main>
   );
+}
+
+export default async function LocaleHomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return <HomePageContent locale={locale} />;
 }

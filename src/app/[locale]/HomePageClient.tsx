@@ -19,11 +19,11 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
   const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
 
   return (
-    <div className="space-y-16">
+    <div className="min-w-0 space-y-16">
       {/* Hero Section */}
       <section className="text-center">
-        <div className="mx-auto mb-5 flex items-center justify-center gap-2">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
+        <div className="mx-auto mb-5 flex min-w-0 flex-wrap items-center justify-center gap-2">
+          <h1 className="break-words text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
           <span className="mt-2 inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground sm:-translate-y-1.5">{home.hero.eyebrow}</span>
         </div>
         <div className="mx-auto mt-5 max-w-2xl">
@@ -76,7 +76,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
 
       {/* Dynamic Content Section — auto-scrolling carousel */}
       {articles.length > 0 && (
-        <section>
+        <section className="min-w-0">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.popular.eyebrow}</p>
@@ -86,7 +86,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
               <div className="hidden gap-2 sm:flex">{home.popular.quickLinks.map((link) => <Badge key={link} variant="outline" className="border-border px-3 py-1 text-muted-foreground">{link}</Badge>)}</div>
             )}
           </div>
-          <div className="relative mt-6 overflow-hidden">
+          <div className="relative mt-6 max-w-full overflow-hidden">
             {/* Gradient fade edges */}
             <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-background to-transparent" />
             <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-background to-transparent" />

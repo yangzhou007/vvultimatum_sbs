@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Game Wiki Mother Template
+
+This repository is the mother template for static game wiki / guide sites. It uses Next.js App Router, MDX content, next-intl, Tailwind CSS, and Cloudflare Pages static export.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the local development server:
 
 ```bash
+npm ci --legacy-peer-deps
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Static Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx tsc --noEmit
+npm run build
+```
 
-## Learn More
+The build output is `out/`. English pages are served without `/en`; the build copies `out/en` to the root and then removes `out/en`.
 
-To learn more about Next.js, take a look at the following resources:
+## Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run preview:static
+npm run check:urls
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
+Production deploys use Cloudflare Pages Direct Upload from GitHub Actions. Do not deploy this template through Docker, GHCR, Netlify, or a long-running Node server.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See `docs/CLOUDFLARE_PAGES_DEPLOY.md` for required GitHub variables, secrets, DNS setup, and acceptance checks.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Content
+
+MDX content lives under `content/<locale>/<content-type>/`. Navigation content types come from `src/config/navigation.ts`.

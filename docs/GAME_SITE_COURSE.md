@@ -1,6 +1,13 @@
 # Game Site Course Operating Rules
 
-This document translates the local course PDFs into project operating rules for this static game wiki mother template and its generated child sites. It is an execution guide, not a full transcript of the course.
+This document translates the local course HTML files into project operating rules for this static game wiki mother template and its generated child sites. It is an execution guide, not a full transcript of the course.
+
+## Source Priority
+
+- Use the HTML files listed in `docs/COURSE_SOURCE_FILES.md` as the course source of truth.
+- Do not use the old PDF exports as course reference unless the user explicitly asks to inspect a PDF.
+- When an HTML file and an older PDF export disagree, follow the HTML file.
+- The combined links document is a companion source for clickable links and cross-lesson references, not a replacement for the individual lesson HTML files.
 
 ## Core Strategy
 

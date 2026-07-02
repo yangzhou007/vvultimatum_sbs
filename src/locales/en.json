@@ -4,7 +4,7 @@
     "shortName": "Game Wiki",
     "tagline": "Fan-Made Community Wiki",
     "description": "Reusable static game wiki template for guides, codes, bosses, maps, tier lists, and progression walkthroughs.",
-    "legalNotice": "Reusable static fan wiki template. Child sites must replace this copy."
+    "legalNotice": "Reusable static fan wiki template. Child sites must replace this copy before launch."
   },
   "nav": {
     "races": "Races",
@@ -28,374 +28,285 @@
       "title": "Game Wiki",
       "description": "Reusable static game wiki template for guides, codes, bosses, maps, tier lists, and progression walkthroughs.",
       "stats": [
-        "Launched Jun 5",
-        "Updated Jun 11",
-        "3 Races",
-        "Lv100 Cap",
-        "130+ Skills"
+        "Static Export",
+        "Cloudflare Pages",
+        "MDX Content",
+        "SEO Ready",
+        "Ad Slots Optional"
       ],
       "primaryCta": "Start Beginner Guide",
-      "secondaryCta": "Compare Races",
-      "tertiaryCta": "Check Active Codes",
+      "secondaryCta": "Browse Categories",
+      "tertiaryCta": "Check Codes",
       "videoLabel": "Official media"
     },
     "updates": {
-      "title": "动态更新",
-      "browse": "Browse All Guides",
-      "viewAll": "View All"
+      "title": "Latest Updates",
+      "browse": "Browse Guides",
+      "viewAll": "View All",
+      "empty": "No published articles yet. Add MDX content before launch."
     },
     "start": {
       "eyebrow": "Start Here",
-      "title": "Start Your Game Wiki",
+      "title": "Build a Launch-Ready Game Wiki",
       "cards": [
         {
           "number": "1",
-          "title": "Beginner Guide",
-          "description": "Master the Spirit World from day one with our comprehensive beginner guide covering controls, combat, and early progression."
+          "title": "Choose the Main Keyword",
+          "description": "Use the homepage for the main game query and reserve inner pages for codes, guides, tier lists, maps, bosses, and progression keywords."
         },
         {
           "number": "2",
-          "title": "Fastest Leveling",
-          "description": "Dominate early game and max your progression with the most efficient leveling routes and strategies."
+          "title": "Prepare Real Game Data",
+          "description": "Replace every placeholder with real official links, media, gameplay facts, content categories, and useful page summaries."
         },
         {
           "number": "3",
-          "title": "Best Farming Spots",
-          "description": "Maximize your Soul Essence and EXP gains with optimal farming locations for every stage."
+          "title": "Publish Helpful Pages",
+          "description": "Create one focused MDX article per keyword, starting from H2 content, with tables, FAQs, source links, and internal links."
         },
         {
           "number": "4",
-          "title": "How to Extract",
-          "description": "Learn the best methods and locations for extracting resources in VV Ultimatum."
+          "title": "Verify Before Launch",
+          "description": "Run static export, sitemap checks, internal link checks, desktop/mobile review, and analytics or ad smoke tests before deploying."
         }
       ]
     },
     "popular": {
       "eyebrow": "Popular Pages",
-      "title": "Trending Now",
+      "title": "Trending Guides",
       "quickLinks": [
-        "Hollow Progression",
-        "Fastest Leveling",
-        "Spirit Charms",
-        "All Boss Guides"
+        "Codes",
+        "Beginner Guide",
+        "Tier List",
+        "Map",
+        "Bosses"
       ],
-      "cards": [
-        {
-          "badge": "Beginner",
-          "title": "Beginner Guide",
-          "description": "Everything you need from your first login to mastering the basics of combat and progression.",
-          "href": "/guide/vv-ultimatum-beginner-guide-2026"
-        },
-        {
-          "badge": "Updated",
-          "title": "Active Codes",
-          "description": "All working codes with rewards redeem before they expire.",
-          "href": "/codes"
-        },
-        {
-          "badge": "Updated",
-          "title": "Equipment Database",
-          "description": "94 items across 5 slots complete gear database with stats, rarity, and sources.",
-          "href": "/skills"
-        },
-        {
-          "badge": "Popular",
-          "title": "Which Race Should You Pick?",
-          "description": "Shinigami, Quincy, or Hollow compare all three and find your perfect playstyle.",
-          "href": "/races"
-        },
-        {
-          "badge": "New",
-          "title": "Enemies & Monsters",
-          "description": "23 enemy types across 5 regions drops, locations, and farming tips.",
-          "href": "/bosses"
-        },
-        {
-          "badge": "Popular",
-          "title": "Boss Locations & Drops",
-          "description": "Every boss location, drop table, and respawn timer in one reference.",
-          "href": "/bosses"
-        },
-        {
-          "badge": "Popular",
-          "title": "Best Builds",
-          "description": "Optimal stat allocation, skill tree picks, and Charm combos for every playstyle.",
-          "href": "/guide/VV-Ultimatum-builder"
-        },
-        {
-          "badge": "New",
-          "title": "Shikai Tier List",
-          "description": "All 6 Shinigami Shikai types ranked by PvP and PvE performance.",
-          "href": "/tier-list/vv-ultimatum-best-shikai-tier-list"
-        },
-        {
-          "badge": "New",
-          "title": "World Events Guide",
-          "description": "Supply Caches, Raids, and endgame world events with rare rewards.",
-          "href": "/guide"
-        }
-      ]
+      "cards": []
     },
     "aboutGame": {
-      "title": "What is VV: ULTIMATUM?",
+      "title": "What This Template Includes",
       "paragraphs": [
-        "VV: ULTIMATUM is a stylized fighting RPG on Roblox inspired by the Bleach anime universe. Choose from three playable races Shinigami, Quincy, or Hollow each with unique progression systems, unlockable abilities, and evolution paths. Master over 130 skills as you fight your way to the level 100 cap.",
-        "Whether you're unlocking your first Shikai, evolving from a base Hollow into an Arrancar, or grinding Quincy Lieutenant missions, our wiki covers every system with detailed guides, data tables, and step-by-step walkthroughs."
+        "This mother template provides the static framework for a game wiki: homepage modules, category pages, MDX article rendering, breadcrumbs, table of contents, JSON-LD, canonical URLs, sitemap generation, robots.txt, legal pages, and optional analytics or ad hooks.",
+        "Child sites should replace the template copy with real game data before launch: game name, domain, hero image, trailer, official links, homepage modules, keywords, article content, contact email, and advertising keys."
       ],
       "stats": [
         {
-          "label": "Developer",
-          "value": "Midnight Continent"
+          "label": "Hosting",
+          "value": "Cloudflare Pages"
         },
         {
-          "label": "Platform",
-          "value": "Roblox"
+          "label": "Output",
+          "value": "Static HTML"
         },
         {
-          "label": "Genre",
-          "value": "Fighting RPG"
+          "label": "Content",
+          "value": "MDX"
         },
         {
-          "label": "Visits",
-          "value": "12.6M+"
+          "label": "SEO",
+          "value": "JSON-LD"
         },
         {
-          "label": "Favorites",
-          "value": "243K+"
+          "label": "Analytics",
+          "value": "Optional"
         },
         {
-          "label": "Total Skills",
-          "value": "130+"
-        },
-        {
-          "label": "Level Cap",
-          "value": "100"
+          "label": "Ads",
+          "value": "Optional"
         }
       ],
-      "cta": "Explore All Guides"
+      "cta": "Explore Guide Pages"
     },
     "explore": {
-      "title": "VV Ultimatum Homepage Modules Navigation",
-      "description": "Jump straight to the eight homepage sections and scroll to the module you need.",
+      "title": "Homepage Module Starters",
+      "description": "Replace these generic modules with real sections for the target game before launch.",
       "modules": [
         {
           "order": 1,
-          "name": "VV Ultimatum Codes",
-          "description": "Redeem the current VV Ultimatum code before spending rerolls so you can test faction ideas with more room to pivot.",
+          "name": "Active Codes",
+          "description": "Track working codes, rewards, expiration status, and redeem steps from official or verified community sources.",
           "href": "/codes",
           "displayType": "code-cards",
           "highlights": [
             {
-              "label": "day1",
-              "detail": "3× Clan Reroll + Token Booster + Focus Elixir",
-              "badge": "Active"
+              "label": "CODE",
+              "detail": "Replace with a real active code or remove this module.",
+              "badge": "Template"
             }
           ]
         },
         {
           "order": 2,
-          "name": "VV Ultimatum Beginner Guide",
-          "description": "Use the first hour to lock in a faction route, learn the live controls, and push quests instead of burning resources on random rerolls.",
-          "href": "/guide/vv-ultimatum-beginner-guide-2026",
+          "name": "Beginner Guide",
+          "description": "Show the first-hour path: setup, controls, early quests, beginner mistakes, and progression checkpoints.",
+          "href": "/guide",
           "displayType": "step-by-step",
           "highlights": [
             {
               "label": "1",
-              "detail": "Choose a faction route before spending rerolls"
+              "detail": "Pick a starting route or class"
             },
             {
               "label": "2",
-              "detail": "Finish the opening path and learn the live controls"
+              "detail": "Learn controls and combat basics"
             },
             {
               "label": "3",
-              "detail": "Redeem the launch code once the Shop unlocks"
+              "detail": "Claim safe early rewards"
             },
             {
               "label": "4",
-              "detail": "Push story quests before side grinding"
-            },
-            {
-              "label": "5",
-              "detail": "Start mission systems as soon as they open"
-            },
-            {
-              "label": "6",
-              "detail": "Spend early points around one damage plan"
+              "detail": "Follow the first progression loop"
             }
           ]
         },
         {
           "order": 3,
-          "name": "VV Ultimatum Official Links",
-          "description": "Verified destinations worth bookmarking for the real game page, community channels, and official video feed.",
-          "href": "/codes",
+          "name": "Official Links",
+          "description": "Link to official game pages, social channels, patch notes, communities, and tools configured for the child site.",
+          "href": "/about",
           "displayType": "card-list",
           "highlights": [
             {
-              "label": "🎮",
-              "detail": "VV: ULTIMATUM on Roblox"
+              "label": "Game",
+              "detail": "Official game page"
             },
             {
-              "label": "💬",
-              "detail": "Official Discord Server"
+              "label": "Chat",
+              "detail": "Official community channel"
             },
             {
-              "label": "📺",
-              "detail": "Official YouTube Channel"
+              "label": "Video",
+              "detail": "Official video channel"
             },
             {
-              "label": "🐦",
-              "detail": "VV Ultimatum on X"
-            },
-            {
-              "label": "🎵",
-              "detail": "VV Ultimatum on TikTok"
-            },
-            {
-              "label": "👥",
-              "detail": "Roblox Community Group"
+              "label": "Tool",
+              "detail": "Builder or planner link"
             }
           ]
         },
         {
           "order": 4,
-          "name": "VV Ultimatum Clans Tier List",
-          "description": "Treat Clan Rerolls as route-shaping resources. The best keeps depend on faction identity.",
+          "name": "Tier List",
+          "description": "Rank important characters, skills, builds, weapons, pets, clans, or classes with clear update dates and criteria.",
           "href": "/tier-list",
           "displayType": "tier-grid",
           "highlights": [
             {
               "label": "S",
-              "detail": "Kurosaki · Shihoin · Cifer — Do not reroll"
+              "detail": "Best options for most players"
             },
             {
               "label": "A",
-              "detail": "Eisenhauer · Ishida · Kamamura · Aaroniero — Keep for build"
+              "detail": "Strong options with minor tradeoffs"
             },
             {
               "label": "B",
-              "detail": "Parnkgjas · Hitsugaya · Antenor — Good for leveling"
+              "detail": "Usable options for specific routes"
             },
             {
               "label": "C",
-              "detail": "Schulte · Madarame · Calius — Reroll when affordable"
+              "detail": "Low priority or niche choices"
             }
           ]
         },
         {
           "order": 5,
-          "name": "VV Ultimatum Skill Tree Tier List",
-          "description": "Builds work best when players choose a clear combat core instead of spreading Skill Points across unrelated routes.",
-          "href": "/skills/vv-ultimatum-best-skills-ranked",
+          "name": "Skills and Builds",
+          "description": "Explain skill trees, stat priorities, build paths, resource costs, and beginner-friendly loadouts.",
+          "href": "/skills",
           "displayType": "tier-grid",
           "highlights": [
             {
-              "label": "S",
-              "detail": "Hakuda (melee combos) · Speed (mobility core)"
-            },
-            {
-              "label": "A",
-              "detail": "Quincy (bow pressure) · Strength (heavy hits) · Shinigami (Kido control)"
-            },
-            {
-              "label": "B",
-              "detail": "Hollow / Arrancar (Cero burst windows)"
+              "label": "Core",
+              "detail": "Main damage or progression route"
             },
             {
               "label": "Utility",
-              "detail": "Sense (target reading) · Misc (universal combat tools)"
+              "detail": "Mobility, sustain, crowd control, or farming"
+            },
+            {
+              "label": "Budget",
+              "detail": "Easy early choices before rare unlocks"
+            },
+            {
+              "label": "Meta",
+              "detail": "Late-game options worth tracking"
             }
           ]
         },
         {
           "order": 6,
-          "name": "VV Ultimatum Weapons Tier List",
-          "description": "Weapon choices are tied to race. Quincy get the clearest starter list, while Shinigami focus on Zanpakuto growth.",
-          "href": "/tier-list",
-          "displayType": "tier-grid",
+          "name": "Maps and Locations",
+          "description": "Document regions, NPCs, shops, spawn points, resources, and route notes that solve navigation intent.",
+          "href": "/maps",
+          "displayType": "card-list",
           "highlights": [
             {
-              "label": "S",
-              "detail": "Sword — Balanced all-rounder, safest Quincy starter"
+              "label": "Start",
+              "detail": "Starter area and tutorial route"
             },
             {
-              "label": "A",
-              "detail": "Spear (long reach) · Longsword (safe range)"
+              "label": "Farm",
+              "detail": "Resource and XP locations"
             },
             {
-              "label": "B",
-              "detail": "Greatsword · Hammer · Club — Heavy or niche pressure"
+              "label": "Boss",
+              "detail": "Boss arenas and respawn notes"
             },
             {
-              "label": "C",
-              "detail": "Rifle · Rapier — Playable but outclassed"
+              "label": "Shop",
+              "detail": "Vendor and upgrade locations"
             }
           ]
         },
         {
           "order": 7,
-          "name": "VV Ultimatum Hollow Progression Guide",
-          "description": "Hollow progression rewards patience: rushing mask removal too early can leave the final build weaker than necessary.",
-          "href": "/guide/VV-Ultimatum-bleach",
+          "name": "Bosses",
+          "description": "Build boss pages with requirements, attacks, drops, strategy, respawn timing, and related progression links.",
+          "href": "/bosses",
           "displayType": "step-by-step",
           "highlights": [
             {
               "label": "1",
-              "detail": "Choose a Hollow Type (Gorilla, Lizard, Turtle, Centipede)"
+              "detail": "List entry requirements"
             },
             {
               "label": "2",
-              "detail": "Consume Hollows and collect matching traits"
+              "detail": "Explain attack patterns"
             },
             {
               "label": "3",
-              "detail": "Advance from base Hollow → Menos → Adjuchas"
+              "detail": "Show drops and rewards"
             },
             {
               "label": "4",
-              "detail": "Push to Vasto Lorde for the 4-trait ceiling"
-            },
-            {
-              "label": "5",
-              "detail": "Remove mask → Become Arrancar or Vastocar"
-            },
-            {
-              "label": "6",
-              "detail": "Meditate and win the Resurrection Fight"
+              "detail": "Link the next progression page"
             }
           ]
         },
         {
           "order": 8,
-          "name": "VV Ultimatum Shinigami Progression Guide",
-          "description": "The Shinigami route is built around steady questing, Soul Pager missions, meditation timing, and the eventual Shikai fight.",
-          "href": "/races/vv-ultimatum-shinigami-guide",
+          "name": "Races or Classes",
+          "description": "Compare playable routes with strengths, weaknesses, beginner fit, unlocks, and long-term build direction.",
+          "href": "/races",
           "displayType": "step-by-step",
           "highlights": [
             {
               "label": "1",
-              "detail": "Run Main Story Quests to unlock the progression loop"
+              "detail": "Summarize each route"
             },
             {
               "label": "2",
-              "detail": "Unlock Soul Society and buy the Soul Pager"
+              "detail": "Compare beginner difficulty"
             },
             {
               "label": "3",
-              "detail": "Reach Level 25 and start meditation"
+              "detail": "List unlock requirements"
             },
             {
               "label": "4",
-              "detail": "Respond to Spirit Whispers for Shikai EXP"
-            },
-            {
-              "label": "5",
-              "detail": "Solve the Bells Puzzle in the Inner World"
-            },
-            {
-              "label": "6",
-              "detail": "Fight the Shikai NPC and unlock Shikai weapon"
+              "detail": "Recommend next guide pages"
             }
           ]
         }
@@ -403,46 +314,46 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "description": "Quick answers to the most common questions about VV: ULTIMATUM.",
+      "description": "Common launch checks for child game wiki sites built from this template.",
       "items": [
         {
-          "question": "What is VV: ULTIMATUM?",
-          "answer": "VV: ULTIMATUM is a free-to-play fighting RPG on Roblox based on the Bleach anime. You choose one of three races Shinigami (Soul Reaper), Quincy, or Hollow each with unique progression, combat abilities, and evolution systems. The game features 130+ skills, a level 100 cap, boss fights, and deep build customization."
+          "question": "Can this mother template be deployed as-is?",
+          "answer": "It can build as a static site, but a real child site should replace the game copy, domain, media, homepage modules, content, contact email, and optional analytics or ad environment variables before public launch."
         },
         {
-          "question": "Which race should beginners pick?",
-          "answer": "Shinigami is the most straightforward starter race, while Hollow and Quincy offer more specialized progression routes. Compare their abilities before committing."
+          "question": "Where should new game content go?",
+          "answer": "Create MDX files under content/en/<content-type>/<slug>.mdx. Each article should export metadata, start body content from H2, and target one search intent."
         },
         {
-          "question": "What is the current level cap?",
-          "answer": "The current level cap is 100, with more than 130 skills available across trees and race progression systems."
+          "question": "How are URLs generated?",
+          "answer": "English public URLs stay unprefixed. Category pages use paths such as /codes, /guide, /bosses, and article pages use /<content-type>/<slug>."
         },
         {
-          "question": "Where do I find active codes?",
-          "answer": "Use the Codes page for working codes, rewards, expiration notes, and redeem instructions."
+          "question": "How do analytics and ads work?",
+          "answer": "GA4, Clarity, AdSense, and Adsterra slots are controlled by NEXT_PUBLIC_* environment variables. Empty values render no script and no ad DOM."
         },
         {
-          "question": "Are boss guides updated?",
-          "answer": "Boss pages are organized with spawn notes, attack patterns, strategies, drop tables, and related next steps for progression."
+          "question": "What must pass before deployment?",
+          "answer": "Run type checking, static export, sitemap validation, internal link checking, and desktop/mobile visual checks for affected public pages."
         }
       ]
     },
     "finalCta": {
-      "title": "Ready to Master VV: ULTIMATUM?",
-      "description": "From your first steps in Fort Adams to endgame boss fights our community wiki has you covered with free, up-to-date guides.",
-      "primary": "Read the Beginner Guide",
-      "secondary": "Play on Roblox"
+      "title": "Ready to Build a Game Wiki?",
+      "description": "Replace the template data with real game research, then verify the full static export before deploying to Cloudflare Pages.",
+      "primary": "Browse Guide Pages",
+      "secondary": "Official Game"
     }
   },
   "bosses": {
     "meta": {
-      "title": "Bosses — Complete Guide & Walkthrough | VV Ultimatum Wiki",
-      "description": "Complete boss guides for VV: ULTIMATUM — all bosses from tutorial Gelum to endgame encounters with strategies, drops, and respawn timers."
+      "title": "Boss Guides — Game Wiki Template",
+      "description": "Reusable boss guide category page for static game wiki sites."
     },
     "overviewTitle": "Bosses Overview",
-    "overviewDescription": "Complete guides for every boss encounter in VV: ULTIMATUM 13 bosses from the tutorial knight Gelum to endgame encounters like the Gelid Dweller and Gauntlet challenges.",
-    "body": "Bosses in VV: ULTIMATUM serve as skill gates and progression milestones. Some, like Gelum, teach you the combat fundamentals during the tutorial. Others, such as the Shikai Spirit and Resurreccion Spirit, are inner-world encounters tied directly to your race's power unlock. Area bosses like Dragonfly, King Croc, and Securis guard access to new zones and rewards. Recent additions include the Rogue Commander with his Minions, the ice-themed The Everfrosted, and four brand new endgame bosses: The Gelid Dweller, Cinder of the Broken Sky, Devourer of Hosts, and the Wandering Swordsman (Junichiro). Each boss has distinct attack patterns and telegraphed moves you need to learn. Use the guides below to prepare for every fight.",
-    "guidesTitle": "Bosses Guides",
+    "overviewDescription": "Use this category for boss requirements, attack patterns, drops, timers, and progression strategy pages.",
+    "body": "Boss pages should solve a concrete player problem: where to find the boss, how to start the fight, what attacks to expect, what rewards can drop, and what page to read next.",
+    "guidesTitle": "Boss Guides",
     "readMore": "Read more",
     "new": "New",
     "popular": "Popular"
@@ -452,7 +363,7 @@
     "activeCodes": "Active Codes",
     "updated": "Updated",
     "viewAllCodes": "View all codes",
-    "playOnRoblox": "Play on Roblox",
+    "officialGame": "Official Game",
     "inThisSection": "In this section",
     "tableOfContents": "Table of Contents",
     "nextSteps": "Next Steps",
@@ -462,11 +373,11 @@
     "readMore": "Read more",
     "officialMedia": "Official media",
     "home": "Home",
-    "noGuidesAvailable": "No guides available yet. Check back soon!"
+    "noGuidesAvailable": "No guides available yet. Add MDX content before launch."
   },
   "footer": {
     "aboutTitle": "Game Wiki Template",
-    "about": "Game Wiki Template is a static guide-site starter for reusable wiki navigation, MDX content, and Cloudflare Pages deployment.",
+    "about": "Game Wiki Template is a static guide-site starter for reusable wiki navigation, MDX content, SEO metadata, legal pages, analytics hooks, ad slots, and Cloudflare Pages deployment.",
     "quickLinks": "Quick Links",
     "guides": "Guides",
     "legal": "Legal",
@@ -475,11 +386,13 @@
     "playGame": "Official Game",
     "officialDiscord": "Official Discord",
     "officialYoutube": "Official YouTube",
-    "vvBuilder": "VV Builder (Skill Planner)",
-    "beginnerGuide": "Beginner Guide",
+    "builder": "Build Planner",
+    "beginnerGuide": "Guide Index",
     "raceGuides": "Race Guides",
     "bossGuides": "Boss Guides",
-    "buildGuide": "Build Guide",
+    "buildGuide": "Build Guides",
+    "contact": "Contact",
+    "htmlSitemap": "HTML Sitemap",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   }

@@ -1,6 +1,8 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
+import { AnalyticsScripts } from "@/components/analytics-scripts";
+import { StickyAdBanner } from "@/components/ads";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site";
 import { SITE_CONFIG } from "@/config/site";
 
@@ -25,8 +27,10 @@ export async function LocaleShell({
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <NextIntlClientProvider locale={locale} messages={messages}>
+        <AnalyticsScripts />
         <JsonLd data={organization} />
         <SiteHeader locale={locale} />
+        <StickyAdBanner />
         {children}
         <SiteFooter locale={locale} />
       </NextIntlClientProvider>

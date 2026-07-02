@@ -30,16 +30,29 @@ export async function HomePageContent({ locale }: { locale: string }) {
   const loc = locale as Locale;
   const messages = (await getMessages({ locale })) as Messages;
   const navGroups = getDynamicNavigation(loc);
+  const hasSidebar = navGroups.length > 0 || SITE_CONFIG.activeCodes.length > 0;
   const webSite = { "@context": "https://schema.org", "@type": "WebSite", name: SITE_CONFIG.siteName, url: SITE_CONFIG.siteUrl, description: SITE_CONFIG.description };
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: messages.home.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
-  // 动态加载所有 content 目录下的文章
+  // Load every MDX article under the configured content directories.
   const allArticles: ContentItem[] = [];
   for (const contentType of CONTENT_TYPES) {
     const items = await getAllContent(contentType, loc);
     allArticles.push(...items);
   }
 
-  // 取最近更新的 8 篇文章（按 date 倒序）
+  // Show the latest 8 articles by metadata date.
   const recentArticles = [...allArticles]
     .sort((a, b) => {
       const dateA = a.metadata.lastModified || a.metadata.date;
@@ -51,11 +64,12 @@ export async function HomePageContent({ locale }: { locale: string }) {
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={webSite} />
-      <div className="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <JsonLd data={faqData} />
+      <div className={`grid min-w-0 grid-cols-1 gap-10 ${hasSidebar ? "lg:grid-cols-[minmax(0,1fr)_300px]" : ""}`}>
         <div className="min-w-0">
           <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} />
         </div>
-        <WikiSidebar locale={locale} navGroups={navGroups} />
+        {hasSidebar && <WikiSidebar locale={locale} navGroups={navGroups} />}
       </div>
     </main>
   );

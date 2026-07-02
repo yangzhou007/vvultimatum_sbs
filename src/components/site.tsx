@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CollapsibleNavGroup } from "@/components/collapsible-nav-group";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { ClientThemeToggle } from "@/components/theme-toggle";
+import { SidebarAds } from "@/components/ads";
 
 export function localizeHref(href: string, locale: string) {
   if (locale === "en") return href;
@@ -59,7 +60,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
 export async function WikiSidebar({ locale, navGroups, currentPath }: { locale: string; navGroups: NavGroup[]; currentPath?: string }) {
   const t = await getTranslations({ locale, namespace: "shared" });
   const isActive = (href: string) => currentPath === href;
-  return <aside className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1"><section className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm"><h3 className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">{t("wikiNavigation")}</h3><div className="space-y-4">{navGroups.map((group) => <CollapsibleNavGroup key={group.slug} title={group.title} icon={<span className="grid h-4 w-4 place-items-center rounded text-[10px] font-bold text-[hsl(var(--nav-theme))]">{group.title[0]}</span>} count={group.count} currentPath={currentPath}><ul className="space-y-1">{group.links.map((link) => <li key={link.href}><Link href={localizeHref(link.href, locale)} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors ${isActive(link.href) ? "bg-[hsl(var(--nav-theme)/0.15)] font-semibold text-[hsl(var(--nav-theme))]" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}><span className="truncate">{link.label}</span>{link.badge && <Badge variant="secondary" className="ml-auto h-5 border-border px-1.5 text-[10px]">{link.badge}</Badge>}</Link></li>)}</ul></CollapsibleNavGroup>)}</div></section>{SITE_CONFIG.activeCodes.length > 0 && <section className="rounded-2xl border border-border bg-card/60 p-5"><h3 className="mb-3 text-sm font-bold text-foreground">{t("activeCodes")}</h3><div className="space-y-3 text-sm">{SITE_CONFIG.activeCodes.map((item) => <div key={item.code} className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">{item.code}</code><p className="mt-1 text-muted-foreground">{item.reward}</p></div>)}<Link href={localizeHref("/codes", locale)} className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("viewAllCodes")} <ChevronRight className="h-4 w-4" /></Link></div></section>}</aside>;
+  return <aside className="min-w-0 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-1">{navGroups.length > 0 && <section className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm"><h3 className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">{t("wikiNavigation")}</h3><div className="space-y-4">{navGroups.map((group) => <CollapsibleNavGroup key={group.slug} title={group.title} icon={<span className="grid h-4 w-4 place-items-center rounded text-[10px] font-bold text-[hsl(var(--nav-theme))]">{group.title[0]}</span>} count={group.count} currentPath={currentPath}><ul className="space-y-1">{group.links.map((link) => <li key={link.href}><Link href={localizeHref(link.href, locale)} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition-colors ${isActive(link.href) ? "bg-[hsl(var(--nav-theme)/0.15)] font-semibold text-[hsl(var(--nav-theme))]" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}><span className="truncate">{link.label}</span>{link.badge && <Badge variant="secondary" className="ml-auto h-5 border-border px-1.5 text-[10px]">{link.badge}</Badge>}</Link></li>)}</ul></CollapsibleNavGroup>)}</div></section>}{SITE_CONFIG.activeCodes.length > 0 && <section className="rounded-2xl border border-border bg-card/60 p-5"><h3 className="mb-3 text-sm font-bold text-foreground">{t("activeCodes")}</h3><div className="space-y-3 text-sm">{SITE_CONFIG.activeCodes.map((item) => <div key={item.code} className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">{item.code}</code><p className="mt-1 text-muted-foreground">{item.reward}</p></div>)}<Link href={localizeHref("/codes", locale)} className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("viewAllCodes")} <ChevronRight className="h-4 w-4" /></Link></div></section>}<SidebarAds /></aside>;
 }
 
 export async function SiteFooter({ locale }: { locale: string }) {
@@ -69,13 +70,15 @@ export async function SiteFooter({ locale }: { locale: string }) {
     [t("playGame"), SITE_CONFIG.officialLinks.game],
     [t("officialDiscord"), SITE_CONFIG.officialLinks.discord],
     [t("officialYoutube"), SITE_CONFIG.officialLinks.youtube],
-    [t("vvBuilder"), SITE_CONFIG.officialLinks.builder],
+    [t("builder"), SITE_CONFIG.officialLinks.builder],
   ].filter(([, href]) => Boolean(href));
   const guideLinks = [
     [t("beginnerGuide"), SITE_CONFIG.footerGuideLinks.beginnerGuide],
     [t("raceGuides"), SITE_CONFIG.footerGuideLinks.raceGuides],
     [t("bossGuides"), SITE_CONFIG.footerGuideLinks.bossGuides],
     [t("buildGuide"), SITE_CONFIG.footerGuideLinks.buildGuide],
+    [t("contact"), SITE_CONFIG.footerGuideLinks.contact],
+    [t("htmlSitemap"), SITE_CONFIG.footerGuideLinks.htmlSitemap],
     [t("privacyPolicy"), SITE_CONFIG.footerGuideLinks.privacyPolicy],
     [t("termsOfService"), SITE_CONFIG.footerGuideLinks.termsOfService],
   ];

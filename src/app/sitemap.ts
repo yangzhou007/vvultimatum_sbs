@@ -14,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms-of-service",
     "/copyright",
     "/about",
+    "/contact",
+    "/sitemap",
   ];
 
   // Dynamic paths: scan English MDX content files, then let non-English locales

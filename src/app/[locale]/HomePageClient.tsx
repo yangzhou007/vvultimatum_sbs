@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { AdBanner } from "@/components/ads";
 import { TrailerButton, localizeHref } from "@/components/site";
 import { SITE_CONFIG } from "@/config/site";
 import type { ContentItem } from "@/lib/content";
@@ -32,32 +33,36 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
         <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">{home.hero.stats.map((stat) => <span key={stat} className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">{stat}</span>)}</div>
       </section>
 
-      {/* 最近更新 + 新手教程 两栏布局 */}
+      {/* Latest updates + starter guide layout */}
       <section className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-        {/* 左侧：动态更新 — 最近 8 篇 MDX 文章，支持滚动 */}
-        <Card className="border-border bg-card/70 p-5">
+        {/* Latest MDX articles */}
+        <Card className="self-start border-border bg-card/70 p-5">
           <h2 className="mb-4 text-xl font-bold text-foreground">{home.updates.title}</h2>
-          <div className="max-h-[520px] space-y-3 overflow-y-auto pr-1">
-            {recentArticles.map((article) => (
-              <Link
-                key={`/${article.contentType}/${article.slug}`}
-                href={localizeHref(`/${article.contentType}/${article.slug}`, locale)}
-                className="block rounded-xl border border-border bg-background p-4 transition hover:border-[hsl(var(--nav-theme-light))]"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <Badge className="bg-[hsl(var(--nav-theme))] text-primary-foreground">{article.contentType.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}</Badge>
-                  <span className="text-xs text-muted-foreground">{article.metadata.date}</span>
-                </div>
-                <p className="font-semibold text-foreground">{article.metadata.title}</p>
-              </Link>
-            ))}
-          </div>
+          {recentArticles.length > 0 ? (
+            <div className="max-h-[520px] space-y-3 overflow-y-auto pr-1">
+              {recentArticles.map((article) => (
+                <Link
+                  key={`/${article.contentType}/${article.slug}`}
+                  href={localizeHref(`/${article.contentType}/${article.slug}`, locale)}
+                  className="block rounded-xl border border-border bg-background p-4 transition hover:border-[hsl(var(--nav-theme-light))]"
+                >
+                  <div className="mb-2 flex items-center justify-between">
+                    <Badge className="bg-[hsl(var(--nav-theme))] text-primary-foreground">{article.contentType.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}</Badge>
+                    <span className="text-xs text-muted-foreground">{article.metadata.date}</span>
+                  </div>
+                  <p className="font-semibold text-foreground">{article.metadata.title}</p>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-xl border border-border bg-background p-4 text-sm leading-6 text-muted-foreground">{home.updates.empty}</p>
+          )}
           <Button asChild className="mt-5 w-full" variant="outline">
-            <Link href={localizeHref("/codes", locale)}>{home.updates.browse}</Link>
+            <Link href={localizeHref(SITE_CONFIG.footerGuideLinks.beginnerGuide, locale)}>{home.updates.browse}</Link>
           </Button>
         </Card>
 
-        {/* 右侧：新手教程 4 步卡片 */}
+        {/* Four-step starter cards */}
         <div>
           <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.start.eyebrow}</p>
           <h2 className="mt-1 text-3xl font-bold tracking-tight text-foreground">{home.start.title}</h2>
@@ -72,6 +77,8 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
           </div>
         </div>
       </section>
+
+      <AdBanner slot="banner728x90" />
 
       {/* Dynamic Content Section — auto-scrolling carousel */}
       {articles.length > 0 && (

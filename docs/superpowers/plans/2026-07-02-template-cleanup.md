@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Turn the current VV Ultimatum static wiki into a safer reusable game wiki mother template without adding backend features, ad components, or new content categories.
+**Goal:** Turn the current game-specific static wiki into a safer reusable game wiki mother template without adding backend features or new content categories. A later course-alignment pass added optional analytics and controlled banner ad hooks because the launch course treats them as deployment requirements.
 
 **Architecture:** Keep the existing Next.js static export architecture and MDX content model. Add a small shared site configuration module for reusable site identity, URLs, official links, active codes, and legal copy; keep game-specific example content in place but remove scattered hard-coded behavior from layout, metadata, header, footer, JSON-LD, home trailer, and legal pages.
 
@@ -29,8 +29,8 @@
 
 - Do not add a `builds` content category.
 - Do not add backend, auth, database, Workers, D1, R2, payment, or server runtime.
-- Do not implement GA, Clarity, AdSense, or ad slot rendering components in this cleanup.
-- Do not delete the existing VV Ultimatum MDX content; this cleanup centralizes template configuration and fixes reusable-template hard failures.
+- Do not implement Popunder, Social Bar, Smartlink, or other aggressive ad formats.
+- Do not batch-delete the existing example MDX content in this cleanup; centralize template configuration and fix reusable-template hard failures first.
 
 ## Task 1: Baseline Branch and Plan
 
@@ -176,8 +176,8 @@ Expected: Next static export succeeds, then `check-internal-links.mjs` fails on 
 - [ ] **Step 1: Fix footer links to existing pages**
 
 Change footer guide links so:
-- Beginner Guide points to `/guide/vv-ultimatum-beginner-guide-2026`.
-- Build Guide points to `/guide/VV-Ultimatum-builder`.
+- Guide Index points to `/guide`.
+- Build Guides points to `/guide`.
 
 - [ ] **Step 2: Remove empty updates content type**
 
@@ -316,7 +316,7 @@ Expected: both pass.
 
 - [ ] **Step 1: Neutralize static manifest**
 
-Change manifest text from VV-specific copy to reusable game wiki template copy. Keep icons and colors unchanged for this cleanup.
+Change manifest text from game-specific copy to reusable game wiki template copy. Keep icons and colors unchanged for this cleanup.
 
 - [ ] **Step 2: Document required local env**
 

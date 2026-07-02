@@ -9,19 +9,19 @@ Create these repository variables:
 - `CLOUDFLARE_PAGES_PROJECT`: Cloudflare Pages project name.
 - `NEXT_PUBLIC_SITE_URL`: production site URL, for example `https://example.wiki`. This value is required; builds fail when it is missing.
 
-These variables are reserved for child sites that add analytics or advertising components. The mother template does not render GA, Clarity, AdSense, or ad slots by default:
+These optional variables are wired into the mother template. Empty values or `0` do not render scripts, ad iframes, or ad DOM:
 
 - `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`
 - `NEXT_PUBLIC_MICROSOFT_CLARITY_ID`
 - `NEXT_PUBLIC_GOOGLE_ADSENSE_ID`
-- `NEXT_PUBLIC_AD_SOCIAL_BAR`
-- `NEXT_PUBLIC_AD_NATIVE_BANNER`
 - `NEXT_PUBLIC_AD_BANNER_728X90`
 - `NEXT_PUBLIC_AD_BANNER_300X250`
 - `NEXT_PUBLIC_AD_BANNER_468X60`
 - `NEXT_PUBLIC_AD_SIDEBAR_160X600`
 - `NEXT_PUBLIC_AD_SIDEBAR_160X300`
 - `NEXT_PUBLIC_AD_MOBILE_320X50`
+
+`NEXT_PUBLIC_GOOGLE_ADSENSE_ID` also emits the `google-adsense-account` verification meta tag. Adsterra banner/sidebar/sticky slots are sandboxed iframes generated from the 32-character ad key. Popunder, Social Bar, and Smartlink formats are intentionally not wired because they are poor fits for guide-site UX.
 
 Create these repository secrets:
 
@@ -42,6 +42,8 @@ npm run check:internal-links
 ```
 
 `npm run build` writes the static site to `out/`, copies English pages from `out/en` to the root, removes `out/en`, validates `sitemap.xml`, and checks exported HTML for broken internal links.
+
+Before a child site launch, replace template copy and configure `SITE_CONFIG.contactEmail`, official links, homepage modules, MDX content, images, `ads.txt`, GSC, GA4, Clarity, and ad keys as needed.
 
 ## Cloudflare Pages Project
 
@@ -76,4 +78,4 @@ The deployment is valid only when all of these pass:
 - `out/sitemap.xml` contains no `/en/` URLs.
 - Every sitemap URL maps to an exported HTML file.
 - `npm run check:internal-links` passes against the exported `out/` directory.
-- Preview URLs return HTTP 200 for `/`, `/bosses`, `/guide/vv-ultimatum-beginner-guide-2026`, `/ja`, `/ja/bosses`, `/robots.txt`, `/sitemap.xml`, and `/ads.txt`.
+- Preview URLs return HTTP 200 for `/`, `/bosses`, `/guide`, `/contact`, `/sitemap`, `/robots.txt`, `/sitemap.xml`, and `/ads.txt`.

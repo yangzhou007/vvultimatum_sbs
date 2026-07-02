@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { CONTENT_TYPES as CONFIG_CONTENT_TYPES } from "@/config/navigation";
+import { SITE_CONFIG } from "@/config/site";
 import { routing, type Locale } from "@/i18n/routing";
 
 // 从统一配置导入内容类型
@@ -132,10 +133,18 @@ function getSlugsFromDirectory(dir: string, basePath: string[] = []): string[][]
       paths.push(...getSlugsFromDirectory(fullPath, [...basePath, entry.name]));
     } else if (entry.name.endsWith(".mdx")) {
       const fileName = entry.name.replace(".mdx", "");
-      paths.push([...basePath, fileNameToSlug(fileName)]);
+      const slugPath = [...basePath, fileNameToSlug(fileName)];
+      if (!isIgnoredContentSlug(slugPath)) {
+        paths.push(slugPath);
+      }
     }
   }
   return paths;
+}
+
+function isIgnoredContentSlug(slugPath: string[]) {
+  const slug = slugPath.join("/").toLowerCase();
+  return SITE_CONFIG.ignoredContentSlugFragments.some((fragment) => slug.includes(fragment.toLowerCase()));
 }
 
 /**

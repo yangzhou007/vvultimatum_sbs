@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
-    "build": "next build && node scripts/copy-default-locale-to-root.mjs && node scripts/check-static-export.mjs && node scripts/check-internal-links.mjs",
+    "build": "node scripts/clean-static-output.mjs && next build && node scripts/copy-default-locale-to-root.mjs && node scripts/check-static-export.mjs && node scripts/check-internal-links.mjs",
     "start": "npm run preview:static",
     "preview:static": "npx wrangler pages dev out",
     "check:urls": "node scripts/check-sitemap-urls.mjs",

@@ -19,4 +19,10 @@ for (const entry of fs.readdirSync(defaultLocaleDir)) {
 }
 
 fs.rmSync(defaultLocaleDir, { recursive: true, force: true });
+for (const ext of [".html", ".txt"]) {
+  const duplicateLocaleFile = path.join(outDir, `${path.basename(defaultLocaleDir)}${ext}`);
+  if (fs.existsSync(duplicateLocaleFile)) {
+    fs.rmSync(duplicateLocaleFile, { force: true });
+  }
+}
 console.log("Copied default locale from out/en to out/ and removed out/en.");

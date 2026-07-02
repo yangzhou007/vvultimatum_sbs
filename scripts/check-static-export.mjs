@@ -45,6 +45,12 @@ if (fs.existsSync(path.join(outDir, "en"))) {
   fail("out/en still exists. English pages must be copied to the root and the duplicate locale directory removed.");
 }
 
+for (const duplicateLocaleFile of ["en.html", "en.txt"]) {
+  if (fs.existsSync(path.join(outDir, duplicateLocaleFile))) {
+    fail(`out/${duplicateLocaleFile} still exists. English pages must not be exported with an /en duplicate.`);
+  }
+}
+
 const sitemapPath = path.join(outDir, "sitemap.xml");
 const sitemap = fs.readFileSync(sitemapPath, "utf8");
 const locs = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => decodeXml(match[1]));
